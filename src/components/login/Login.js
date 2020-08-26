@@ -8,7 +8,7 @@ import { styles } from '../../styles/Styles'
 /**
  * @class Login
  * 
- * @description: Classe componente responsável por toda a regra da view das noticias.
+ * @description: .
  * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
@@ -20,7 +20,7 @@ export default class Login extends React.Component {
    */
   render() {
     return (
-      <>
+      <View style={styles.container}>
         <View style={styles.iconLoginArea}>
           <FontAwesomeIcon size={160} icon={ faWallet } />
           <Text>Nossa e sua Carteira Digital :D</Text>
@@ -37,7 +37,7 @@ export default class Login extends React.Component {
             <Text>LOGAR</Text>
           </TouchableOpacity>
         </View>
-      </>
+      </View>
     )
   }
 }
