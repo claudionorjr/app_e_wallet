@@ -2,7 +2,7 @@ import React from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
-import { styles } from '../../styles/Styles'
+import { styles } from './styles'
 
 
 /**
@@ -20,11 +20,11 @@ export default class Login extends React.Component {
    */
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.iconLoginArea}>
-          <FontAwesomeIcon size={160} icon={ faWallet } />
-          <Text>Nossa e sua Carteira Digital :D</Text>
-          <Text>E-Carteira</Text>
+      <>
+        <View style={[styles.iconLoginArea, styles.shadow]}>
+          <FontAwesomeIcon size={120} icon={ faWallet } />
+          <Text style={{fontSize: 16}}>Nossa e sua Carteira Digital :D</Text>
+          <Text style={{fontSize: 16}}>E-Carteira</Text>
         </View>
         <View style={styles.inputLoginArea}>
           <TextInput style={[styles.input, styles.shadow]} placeholder="E-Mail">
@@ -37,7 +37,7 @@ export default class Login extends React.Component {
             <Text>LOGAR</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </>
     )
   }
 }
