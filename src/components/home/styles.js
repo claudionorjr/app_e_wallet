@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     flexDirection: "column",
     justifyContent: "space-between",
-    paddingTop: 20,
+    paddingTop: 23,
     paddingBottom: 3,
   },
   accountDaties: {
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   singOut: {
     alignItems: "flex-end",
-    padding: 5,
+    paddingRight: 9,
   },
   amount: {
     flexDirection: "row",

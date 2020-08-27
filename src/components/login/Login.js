@@ -33,7 +33,9 @@ export default class Login extends React.Component {
           <TextInput style={[styles.input, styles.shadow]} placeholder="Password">
             
           </TextInput>
-          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {}}>
+          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
+            this.props.navigation.navigate('Home')
+          }}>
             <Text>LOGAR</Text>
           </TouchableOpacity>
         </View>

@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faInfo, faDollarSign, faCalendarAlt} from '@fortawesome/free-solid-svg-icons'
 import { styles } from './styles'
+import NavBar from '../home/NavBar'
 import { transactions } from '../../data/transactions'
 
 
@@ -34,10 +35,13 @@ export default class Statement extends React.Component {
 
   render() {
     return (
-      <FlatList style={styles.flatList} data={transactions} keyExtractor={(item) => item['id']}
-        renderItem={(item) => {
-          return this.renderItem(item)
-      }}/>
+      <>
+        <NavBar navigation={this.props.navigation} type={'Statement'}/>
+        <FlatList style={styles.flatList} data={transactions} keyExtractor={(item) => String(item['id'])}
+          renderItem={(item) => {
+            return this.renderItem(item)
+        }}/>
+      </>
     )
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faBarcode, faExternalLinkAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBarcode, faExternalLinkAlt, faSignOutAlt, faDollarSign } from '@fortawesome/free-solid-svg-icons'
 
 
 /**
@@ -29,16 +29,22 @@ export default class NavBar extends React.Component {
         </TouchableOpacity>
         </View>
         <View style={styles.amount}>
-          <Text style={{fontSize: 32}}>Saldo: 654,45</Text>
+          <Text style={{fontSize: 32, fontStyle: "italic"}}>
+            <FontAwesomeIcon size={22} icon={ faDollarSign } /> 654,45
+          </Text>
         </View>
-        <View style={styles.options}>
-          <TouchableOpacity onPress={() => {}}>
+        {this.props.type == 'Statement' ? (<View style={styles.options}>
+          <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Transfer')
+          }}>
             <FontAwesomeIcon size={50} icon={ faExternalLinkAlt } />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Pay')
+          }}>
             <FontAwesomeIcon size={60} icon={ faBarcode } />
           </TouchableOpacity>
-        </View>
+        </View>) : <Text>Teste</Text>}
       </View>
     )
   }
