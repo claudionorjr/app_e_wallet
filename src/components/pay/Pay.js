@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
+import NavBar from '../home/NavBar'
 
 
 /**
@@ -15,18 +16,21 @@ export default class Pay extends React.Component {
 
   render() {
     return (
-      <View style={styles.payArea}>
-        <>
-          <Text style={{marginLeft: 10}}>Código de Barras</Text>
-          <TextInput style={[styles.input, styles.shadow]} returnKeyLabel='teste' placeholder="Código...">
+      <>
+        <NavBar navigation={this.props.navigation} type={'Pay'}/>
+        <View style={styles.payArea}>
+          <>
+            <Text style={{marginLeft: 10}}>Código de Barras</Text>
+            <TextInput style={[styles.input, styles.shadow]} returnKeyLabel='teste' placeholder="Código...">
 
-          </TextInput>
-        </>
+            </TextInput>
+          </>
 
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {}}>
-          <Text>PAGAR BOLETO</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {}}>
+            <Text>PAGAR BOLETO</Text>
+          </TouchableOpacity>
+        </View>
+      </>
     )
   }
 }

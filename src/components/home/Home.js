@@ -1,13 +1,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import Statement from '../statement/Statement'
 import Transfer from '../transfer/Transfer'
 import Pay from '../pay/Pay'
 
-const Stack = createStackNavigator();
+
+const Stack = createStackNavigator()
 
 /**
  * @class Home

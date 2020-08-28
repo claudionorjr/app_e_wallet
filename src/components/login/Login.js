@@ -1,8 +1,10 @@
 import React from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 import { styles } from './styles'
+import { validateUser } from '../../requirements/Login/auth'
 
 
 /**
@@ -13,7 +15,11 @@ import { styles } from './styles'
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-export default class Login extends React.Component {
+class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {inputLogin: {'email': '', 'password': ''}}
+  }
 
   /**
    * @description: Renderiza a tela de "Login".
@@ -22,19 +28,33 @@ export default class Login extends React.Component {
     return (
       <>
         <View style={[styles.iconLoginArea, styles.shadow]}>
-          <FontAwesomeIcon size={120} icon={ faWallet } />
+          <FontAwesomeIcon size={85} icon={ faWallet } />
           <Text style={{fontSize: 16}}>Nossa e sua Carteira Digital :D</Text>
           <Text style={{fontSize: 16}}>E-Carteira</Text>
         </View>
         <View style={styles.inputLoginArea}>
-          <TextInput style={[styles.input, styles.shadow]} placeholder="E-Mail">
+          <TextInput style={[styles.input, styles.shadow]}
+          onChangeText={(text) => {
+                this.setState({inputLogin: {'email': text, 'password': this.state.inputLogin.password}})
+          }}
+          placeholder="E-Mail"
+          value={this.state.inputLogin.email} /> 
 
-          </TextInput>
-          <TextInput style={[styles.input, styles.shadow]} placeholder="Password">
+          <TextInput style={[styles.input, styles.shadow]}
+          onChangeText={(text) => {
+                this.setState({inputLogin: {'email': this.state.inputLogin.email, 'password': text}})
+          }}
+          placeholder="Password"
+          value={this.state.inputLogin.password} />
             
-          </TextInput>
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-            this.props.navigation.navigate('Home')
+            const response = validateUser(this.state.inputLogin.email, this.state.inputLogin.password)
+            if (response.message == 'authenticated') {
+              this.props.dispatch({type: 'login', response: true})
+            } else {
+              alert('E-mail ou senha incorretos!')
+            }
+            this.setState({inputLogin: {'email': '', 'password': ''}})
           }}>
             <Text>LOGAR</Text>
           </TouchableOpacity>
@@ -43,3 +63,9 @@ export default class Login extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { response: state.response }
+}
+
+export default connect(mapStateToProps)(Login)

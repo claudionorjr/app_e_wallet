@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
+import NavBar from '../home/NavBar'
 
 
 /**
@@ -16,6 +17,7 @@ export default class Transfer extends React.Component {
   render() {
     return (
       <>
+        <NavBar navigation={this.props.navigation} type={'Transfer'}/>
         <View style={styles.transferArea}>
           <View style={{flexDirection: "column"}}>
             <Text style={{marginLeft: 10}}>Código do Banco</Text>
