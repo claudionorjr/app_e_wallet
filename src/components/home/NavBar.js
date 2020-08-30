@@ -2,7 +2,11 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faBarcode, faExternalLinkAlt, faSignOutAlt, faDollarSign, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faSignOutAlt, faDollarSign } from '@fortawesome/free-solid-svg-icons'
+import StatementIcons from './iconsOptions/StatementIcons'
+import PayIcons from './iconsOptions/PayIcons'
+import TransferIcons from './iconsOptions/TransferIcons'
+import DepositIcons from './iconsOptions/DepositIcons'
 import { styles } from './styles'
 
 
@@ -17,62 +21,42 @@ import { styles } from './styles'
 class NavBar extends React.Component {
 
   render() {
-    return (
-      <View style={[styles.headHome, styles.shadow]}>
-        <View style={styles.accountDaties}>
+    /*
+    <View style={styles.accountDaties}>
           <Text style={{fontSize: 12}}>Nome: {this.props.account.name}</Text>
           <Text style={{fontSize: 12}}>Conta: {this.props.account.accountBank}</Text>
           <Text style={{fontSize: 12}}>Agência: {this.props.account.agency}</Text>
         </View> 
+     */
+    return (
+      <View style={[styles.headHome, styles.shadow]}>
         <View style={styles.singOut}>
           <TouchableOpacity onPress={() => {}}>
               <FontAwesomeIcon size={25} icon={ faSignOutAlt } />
+              <Text style={{fontSize: 10}}>Sair</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.amount}>
-          <Text style={{fontSize: 32, fontStyle: "italic"}}>
-            <FontAwesomeIcon size={22} icon={ faDollarSign } /> {this.props.account.amount}
+          <Text style={{fontSize: 32, fontWeight: "bold"}}>
+            Saldo <FontAwesomeIcon size={22} icon={ faDollarSign } />{this.props.account.amount}
           </Text>
         </View>
         {
         this.props.type == 'Statement' ? 
           (<View style={styles.options}>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Transfer')
-            }}>
-              <FontAwesomeIcon size={50} icon={ faExternalLinkAlt } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Pay')
-            }}>
-              <FontAwesomeIcon size={60} icon={ faBarcode } />
-            </TouchableOpacity>
+            <StatementIcons navigation={this.props.navigation}/>
           </View>) :
         this.props.type == 'Pay' ?
           (<View style={styles.options}>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Statement')
-            }}>
-              <FontAwesomeIcon size={60} icon={ faHome } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Transfer')
-            }}>
-              <FontAwesomeIcon size={50} icon={ faExternalLinkAlt } />
-            </TouchableOpacity>
+            <PayIcons navigation={this.props.navigation} />
           </View>) :
         this.props.type == 'Transfer' ?
           (<View style={styles.options}>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Statement')
-            }}>
-              <FontAwesomeIcon size={60} icon={ faHome } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Pay')
-            }}>
-              <FontAwesomeIcon size={60} icon={ faBarcode } />
-            </TouchableOpacity>
+            <TransferIcons navigation={this.props.navigation} />
+          </View>) :
+        this.props.type == 'Deposit' ?
+          (<View style={styles.options}>
+            <DepositIcons navigation={this.props.navigation} />
           </View>) : null
         }
       </View>

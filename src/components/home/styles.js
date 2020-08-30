@@ -18,8 +18,8 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
   },
   singOut: {
-    alignItems: "flex-end",
-    paddingRight: 9,
+    alignItems: "flex-start",
+    paddingLeft: 9,
   },
   amount: {
     flexDirection: "row",

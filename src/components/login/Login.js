@@ -28,9 +28,8 @@ class Login extends React.Component {
     return (
       <>
         <View style={[styles.iconLoginArea, styles.shadow]}>
-          <FontAwesomeIcon size={85} icon={ faWallet } />
-          <Text style={{fontSize: 16}}>Nossa e sua Carteira Digital :D</Text>
-          <Text style={{fontSize: 16}}>E-Carteira</Text>
+          <FontAwesomeIcon size={80} icon={ faWallet } />
+          <Text style={{fontSize: 21, paddingTop: 21, fontWeight: "bold"}}>E-Carteira</Text>
         </View>
         <View style={styles.inputLoginArea}>
           <TextInput style={[styles.input, styles.shadow]}

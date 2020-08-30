@@ -44,6 +44,7 @@ class Statement extends React.Component {
     return (
       <>
         <NavBar navigation={this.props.navigation} type={'Statement'}/>
+        <Text style={{fontSize: 22, fontWeight: "bold", marginLeft: 10}}>Extrato:</Text>
         <FlatList style={styles.flatList} data={this.props.account.transactions} 
           keyExtractor={(item) => String(item['transaction_id'])}
           renderItem={(item) => {

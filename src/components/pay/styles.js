@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   btn: {
     alignItems: "center",
-    backgroundColor: "#77E632",
+    backgroundColor: "#FCB50D",
     borderRadius: 3,
     width: '90%',
     paddingBottom: 10,

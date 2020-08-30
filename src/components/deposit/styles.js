@@ -3,19 +3,12 @@ import { StyleSheet } from 'react-native'
 
 
 export const styles = StyleSheet.create({
-  iconLoginArea: {
-    flexDirection: 'column',
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: '#FCB50D',
-    flex: 7,
-  },
-  inputLoginArea: {
+  depositArea: {
     backgroundColor: "#f0f0f0",
     flexDirection: 'column',
     alignItems: "center",
-    paddingTop: 65,
-    flex: 8,
+    justifyContent: "center",
+    flex: 2,
   },
   input: {
     backgroundColor: '#FFF',
@@ -23,7 +16,7 @@ export const styles = StyleSheet.create({
     height: 36,
     padding: 5,
     borderRadius: 7,
-    marginBottom: 15,
+    margin: 10,
   },
   btn: {
     alignItems: "center",
@@ -32,7 +25,6 @@ export const styles = StyleSheet.create({
     width: '90%',
     paddingBottom: 10,
     paddingTop: 10,
-    marginTop: 25,
   },
   shadow: {
     shadowColor: "#000",
