@@ -21,24 +21,24 @@ import { styles } from './styles'
 class NavBar extends React.Component {
 
   render() {
-    /*
-    <View style={styles.accountDaties}>
-          <Text style={{fontSize: 12}}>Nome: {this.props.account.name}</Text>
-          <Text style={{fontSize: 12}}>Conta: {this.props.account.accountBank}</Text>
-          <Text style={{fontSize: 12}}>Agência: {this.props.account.agency}</Text>
-        </View> 
-     */
     return (
       <View style={[styles.headHome, styles.shadow]}>
         <View style={styles.singOut}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => {
+            this.props.dispatch({type: 'login', response: false})
+          }}>
               <FontAwesomeIcon size={25} icon={ faSignOutAlt } />
               <Text style={{fontSize: 10}}>Sair</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.accountDaties}>
+          <Text style={{fontSize: 12}}>Nome: {this.props.account.name}</Text>
+          <Text style={{fontSize: 12}}>Conta: {this.props.account.accountBank}</Text>
+          <Text style={{fontSize: 12}}>Agência: {this.props.account.agency}</Text>
+        </View>
         <View style={styles.amount}>
           <Text style={{fontSize: 32, fontWeight: "bold"}}>
-            Saldo <FontAwesomeIcon size={22} icon={ faDollarSign } />{this.props.account.amount}
+            Saldo <FontAwesomeIcon size={22} icon={ faDollarSign } />{(Number(this.props.account.amount)).toFixed(2)}
           </Text>
         </View>
         {
@@ -65,7 +65,7 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { account: state.account }
+  return { account: state.account, response: state.response }
 }
 
 export default connect(mapStateToProps)(NavBar)

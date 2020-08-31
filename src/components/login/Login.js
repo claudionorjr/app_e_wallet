@@ -32,14 +32,14 @@ class Login extends React.Component {
           <Text style={{fontSize: 21, paddingTop: 21, fontWeight: "bold"}}>E-Carteira</Text>
         </View>
         <View style={styles.inputLoginArea}>
-          <TextInput style={[styles.input, styles.shadow]}
+          <TextInput keyboardType="email-address" style={[styles.input, styles.shadow]}
           onChangeText={(text) => {
                 this.setState({inputLogin: {'email': text, 'password': this.state.inputLogin.password}})
           }}
           placeholder="E-Mail"
           value={this.state.inputLogin.email} /> 
 
-          <TextInput style={[styles.input, styles.shadow]}
+          <TextInput secureTextEntry={true} style={[styles.input, styles.shadow]}
           onChangeText={(text) => {
                 this.setState({inputLogin: {'email': this.state.inputLogin.email, 'password': text}})
           }}

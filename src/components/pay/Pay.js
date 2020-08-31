@@ -1,7 +1,9 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
+import { connect } from 'react-redux'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
+import { paymentReceipts } from '../../requirements/receipts/receipts'
 
 
 /**
@@ -12,7 +14,11 @@ import NavBar from '../home/NavBar'
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-export default class Pay extends React.Component {
+class Pay extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {inputAmount: ''}
+  }
 
   render() {
     return (
@@ -20,17 +26,31 @@ export default class Pay extends React.Component {
         <NavBar navigation={this.props.navigation} type={'Pay'}/>
         <View style={styles.payArea}>
           <>
-            <Text style={{marginLeft: 10}}>Código de Barras</Text>
-            <TextInput style={[styles.input, styles.shadow]} returnKeyLabel='teste' placeholder="Código...">
-
-            </TextInput>
+            <Text>Valor do Pagamento</Text>
+            <TextInput
+              keyboardType="numeric"
+              onChangeText={(number) => this.setState({inputAmount: ((number.replace(/\D/g,'')) / 100).toFixed(2)})}
+              value={this.state.inputAmount.toString()}
+              style={[styles.input, styles.shadow]}
+              placeholder="Valor..." />
           </>
 
-          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {}}>
-            <Text>PAGAR BOLETO</Text>
+          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
+            this.props.dispatch({type: 'validate/payment', payment: +this.state.inputAmount})
+            this.setState({inputAmount: ''})
+            let textToWatsApp = paymentReceipts(this.state.inputAmount)
+            Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
+          }}>
+            <Text>PAGAR</Text>
           </TouchableOpacity>
         </View>
       </>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { account: state.account }
+}
+
+export default connect(mapStateToProps)(Pay)

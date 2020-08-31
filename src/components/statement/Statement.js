@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faInfo, faDollarSign, faCalendarAlt} from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { styles } from './styles'
+import RenderItem from './RenderItem'
 import NavBar from '../home/NavBar'
-import { loggedUser } from '../../requirements/Login/auth'
+
 
 
 /**
@@ -18,26 +19,11 @@ import { loggedUser } from '../../requirements/Login/auth'
  */
 class Statement extends React.Component {
 
-  componentDidMount() {
-    let accountLoggedUser = loggedUser()
-    this.props.dispatch({ type: 'loggedUser', account: accountLoggedUser})
-  }
-
   renderItem(obj) {
-    console.log(obj)
-    return (
-      <View style={styles.card}>
-        <Text style={{fontSize: 22}}>
-          <FontAwesomeIcon size={18} icon={ faInfo } />
-          . {obj.item['description']}</Text>
-        <Text style={{fontSize: 22}}>
-          <FontAwesomeIcon size={18} icon={ faCalendarAlt } />
-          . {obj.item['date']}</Text>
-        <Text style={{fontSize: 22}}>
-          <FontAwesomeIcon size={18} icon={ faDollarSign } />
-          . {obj.item['value']}</Text>
-      </View>
-      )
+    return obj.item['description'] && obj.item['description'] === 'Depósito' ?
+    (<RenderItem obj={obj.item} color={'green'}/>) :
+    obj.item['description'] === 'Transferência' || obj.item['description'] === 'Pagamento' ?
+    (<RenderItem obj={obj.item} color={'red'}/>) : null
   }
 
   render() {

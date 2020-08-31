@@ -17,7 +17,6 @@ export default function App() {
 }
 
 const LoginGate = (props) => {
-  console.log(props.response)
   let loggedIn = props.response
   return loggedIn ? (<Home />) : (<Login />)
 }

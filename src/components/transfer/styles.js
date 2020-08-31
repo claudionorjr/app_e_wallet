@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: "center",
     justifyContent: "center",
-    flex: 2,
   },
-  btnArea: {
+  formArea: {
+    flexDirection: 'column',
     backgroundColor: "#f0f0f0",
     alignItems: "center",
     justifyContent: "center",
@@ -18,11 +18,11 @@ export const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#FFF',
-    minWidth: 150,
-    height: 36,
+    minWidth: 155,
+    height: 32,
     padding: 5,
     borderRadius: 7,
-    margin: 10,
+    margin: 5,
   },
   btn: {
     alignItems: "center",

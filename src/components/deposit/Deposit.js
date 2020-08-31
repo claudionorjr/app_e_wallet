@@ -1,7 +1,10 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
+import ValidationComponent from 'react-native-form-validator'
+import { connect } from 'react-redux'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
+import { depositReceipts } from '../../requirements/receipts/receipts'
 
 
 /**
@@ -12,7 +15,11 @@ import NavBar from '../home/NavBar'
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-export default class Deposit extends React.Component {
+class Deposit extends ValidationComponent  {
+  constructor(props) {
+    super(props)
+    this.state = {inputAmount: ''}
+  }
 
   render() {
     return (
@@ -20,13 +27,20 @@ export default class Deposit extends React.Component {
         <NavBar navigation={this.props.navigation} type={'Deposit'}/>
         <View style={styles.depositArea}>
           <>
-            <Text style={{marginLeft: 10}}>Valor do depósito</Text>
-            <TextInput style={[styles.input, styles.shadow]} returnKeyLabel='teste' placeholder="Valor...">
-
-            </TextInput>
+            <Text>Valor do depósito</Text>
+            <TextInput style={[styles.input, styles.shadow]}
+              keyboardType="numeric"
+              onChangeText={(number) => this.setState({inputAmount: ((number.replace(/\D/g,'')) / 100).toFixed(2)})}
+              placeholder="Valor..."
+              value={this.state.inputAmount.toString()} />
           </>
 
-          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {}}>
+          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
+            this.props.dispatch({type: 'validate/deposit', deposit: +this.state.inputAmount})
+            this.setState({inputAmount: ''})
+            let textToWatsApp = depositReceipts(this.state.inputAmount)
+            Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
+          }}>
             <Text>DEPOSITAR</Text>
           </TouchableOpacity>
         </View>
@@ -34,3 +48,5 @@ export default class Deposit extends React.Component {
     )
   }
 }
+
+export default connect()(Deposit)

@@ -2,10 +2,12 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { connect } from 'react-redux'
 import Statement from '../statement/Statement'
 import Transfer from '../transfer/Transfer'
 import Pay from '../pay/Pay'
 import Deposit from '../deposit/Deposit'
+import Login from '../login/Login'
 
 
 const Stack = createStackNavigator()
@@ -18,13 +20,9 @@ const Stack = createStackNavigator()
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-export default class Home extends React.Component {
+class Home extends React.Component {
 
   render() {
-    /*
-    
-    <Stack.Screen name="Account" component={Account} />
-    */
     return (
       <>
         <NavigationContainer >
@@ -35,9 +33,17 @@ export default class Home extends React.Component {
               <Stack.Screen name="Pay" component={Pay} />
               <Stack.Screen name="Transfer" component={Transfer} />
               <Stack.Screen name="Deposit" component={Deposit} />
+              <Stack.Screen name="Login" component={Login} />
           </Stack.Navigator>
         </NavigationContainer>
+        {this.props.errorMessage.length > 0 ? alert('Error', this.props.errorMessage) : <></>}
       </>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { errorMessage: state.errorMessage }
+}
+
+export default connect(mapStateToProps)(Home)

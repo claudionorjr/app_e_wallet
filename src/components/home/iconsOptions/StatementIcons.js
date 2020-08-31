@@ -36,10 +36,6 @@ export default class StatementIcons extends React.Component {
           <FontAwesomeIcon size={40} icon={ faArrowAltCircleDown } />
           <Text>Depositar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.column} onPress={() => {}}>
-          <FontAwesomeIcon size={40} icon={ faUser } />
-          <Text>Conta</Text>
-        </TouchableOpacity>
       </>
     )
   }
