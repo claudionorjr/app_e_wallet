@@ -36,14 +36,9 @@ class Home extends React.Component {
               <Stack.Screen name="Login" component={Login} />
           </Stack.Navigator>
         </NavigationContainer>
-        {this.props.errorMessage.length > 0 ? alert('Error', this.props.errorMessage) : <></>}
       </>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return { errorMessage: state.errorMessage }
-}
-
-export default connect(mapStateToProps)(Home)
+export default connect()(Home)

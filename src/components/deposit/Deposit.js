@@ -24,7 +24,7 @@ class Deposit extends ValidationComponent  {
   render() {
     return (
       <>
-        <NavBar navigation={this.props.navigation} type={'Deposit'}/>
+        <NavBar navigation={this.props.navigation} type={'Deposit'} />
         <View style={styles.depositArea}>
           <>
             <Text>Valor do depósito</Text>
@@ -37,8 +37,8 @@ class Deposit extends ValidationComponent  {
 
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
             this.props.dispatch({type: 'validate/deposit', deposit: +this.state.inputAmount})
-            this.setState({inputAmount: ''})
             let textToWatsApp = depositReceipts(this.state.inputAmount)
+            this.setState({inputAmount: ''})
             Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           }}>
             <Text>DEPOSITAR</Text>

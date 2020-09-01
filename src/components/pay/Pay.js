@@ -37,8 +37,8 @@ class Pay extends React.Component {
 
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
             this.props.dispatch({type: 'validate/payment', payment: +this.state.inputAmount})
-            this.setState({inputAmount: ''})
             let textToWatsApp = paymentReceipts(this.state.inputAmount)
+            this.setState({inputAmount: ''})
             Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           }}>
             <Text>PAGAR</Text>
@@ -49,8 +49,4 @@ class Pay extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { account: state.account }
-}
-
-export default connect(mapStateToProps)(Pay)
+export default connect()(Pay)

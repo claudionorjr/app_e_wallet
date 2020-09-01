@@ -1,5 +1,7 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
+import { connect } from 'react-redux'
+import { transferReceipts } from '../../requirements/receipts/receipts'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
 
@@ -12,49 +14,49 @@ import NavBar from '../home/NavBar'
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-export default class Transfer extends React.Component {
+class Transfer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {inputAmount: '', inputDocument: ''}
+  }
 
   render() {
     return (
       <>
         <NavBar navigation={this.props.navigation} type={'Transfer'}/>
         <View style={styles.formArea}>
-          <View style={styles.transferArea}>
-            <View style={{flexDirection: "column"}}>
-              <Text style={{marginLeft: 10}}>Código do Banco</Text>
-              <TextInput keyboardType="decimal-pad" style={[styles.input, styles.shadow]} placeholder="Código...">
-
-              </TextInput>
-              <Text style={{marginLeft: 10}}>Agência sem Dígito</Text>
-              <TextInput keyboardType="decimal-pad" style={[styles.input, styles.shadow]} placeholder="Agência...">
-              
-              </TextInput>
-              <Text style={{marginLeft: 10}}>Conta sem Dígito</Text>
-              <TextInput keyboardType="decimal-pad" style={[styles.input, styles.shadow]} placeholder="Conta...">
-                
-              </TextInput>
-            </View>
-            <View style={{flexDirection: "column"}}>
-                <Text style={{marginLeft: 10}}>Nome do Recebedor</Text>
-                <TextInput style={[styles.input, styles.shadow]} placeholder="Nome...">
-                  
-                </TextInput>
-              <Text style={{marginLeft: 10}}>CPF do Recebedor</Text>
-              <TextInput keyboardType="decimal-pad" style={[styles.input, styles.shadow]} placeholder="CPF...">
-                
-              </TextInput>
-              <Text style={{marginLeft: 10}}>Valor</Text>
-              <TextInput keyboardType="decimal-pad" style={[styles.input, styles.shadow]} placeholder="Valor...">
-                
-              </TextInput>
-            </View>
-          </View>
+          <Text>CPF do Recebedor</Text>
+          <TextInput
+            keyboardType="numeric"
+            onChangeText={(number) => this.setState({inputDocument: (number.replace(/\D/g,''))})}
+            value={this.state.inputDocument.toString()}
+            style={[styles.input, styles.shadow]}
+            placeholder="CPF..." />
           
-          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {}}>
+          <Text>Valor da Transferência</Text>
+          <TextInput
+          keyboardType="numeric"
+          onChangeText={(number) => this.setState({inputAmount: ((number.replace(/\D/g,'')) / 100).toFixed(2)})}
+          value={this.state.inputAmount.toString()}
+          style={[styles.input, styles.shadow]}
+          placeholder="Valor..." />
+
+        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
+          if(this.state.inputDocument.length == 11 || this.state.inputDocument.length == 14) {
+            this.props.dispatch({type: 'validate/transfer', transferAmount: +this.state.inputAmount, transferDocument: this.state.inputDocument})
+            let textToWatsApp = transferReceipts(this.state.inputAmount, this.state.inputDocument)
+            this.setState({inputAmount: '', inputDocument: ''})
+            Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
+          } else {
+            alert("Documento precisa ter '11' caracteres para CPF e '14' para CNPJ.")
+          }
+        }}>
             <Text>TRANSFERIR</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
         </View>
       </>
     )
   }
 }
+
+export default connect()(Transfer)

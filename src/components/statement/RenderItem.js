@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faInfo, faDollarSign, faCalendarAlt} from '@fortawesome/free-solid-svg-icons'
+import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt} from '@fortawesome/free-solid-svg-icons'
 import { styles } from './styles'
 
 
@@ -21,7 +21,11 @@ export default class RenderItem extends React.Component {
         <View style={styles.card}>
             <Text style={{fontSize: 22, color: this.props.color}}>
             <FontAwesomeIcon size={18} icon={ faInfo } />
-            . {this.props.obj['description']}
+            . {this.props.obj['transaction_id'] }
+            </Text>
+            <Text style={{fontSize: 22, color: this.props.color}}>
+            <FontAwesomeIcon size={18} icon={ faExchangeAlt } />
+            . {this.props.obj['description'] }
             </Text>
             <Text style={{fontSize: 22, color: this.props.color}}>
             <FontAwesomeIcon size={18} icon={ faCalendarAlt } />

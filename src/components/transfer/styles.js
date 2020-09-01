@@ -18,11 +18,11 @@ export const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#FFF',
-    minWidth: 155,
+    width: '90%',
     height: 32,
     padding: 5,
     borderRadius: 7,
-    margin: 5,
+    margin: 10,
   },
   btn: {
     alignItems: "center",

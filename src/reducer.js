@@ -47,6 +47,15 @@ export default function reducer (state = {response: false, account: {
           ...state,
           account: account
       }
+    case 'validate/transfer':
+      amount = (state.account.amount - action.transferAmount)
+      transaction = {"transaction_id": id, "documentReceiver": action.transferDocument, "description":"Transferência", "date": dateFormat, "value": action.transferAmount}
+      transactions = [ ...state.account.transactions, transaction ]
+      account = { ...state.account, amount, transactions }
+      return {
+          ...state,
+          account: account
+      }
     default:
       return state;
   }
