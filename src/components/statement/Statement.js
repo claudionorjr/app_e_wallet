@@ -6,17 +6,20 @@ import RenderItem from './RenderItem'
 import NavBar from '../home/NavBar'
 
 
-
 /**
  * @class Statement
- * 
- * @description: .
  * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
 class Statement extends React.Component {
 
+  /**
+   * @description: Se o usuário já tem transações, vai ser rederizado uma linha da FlatList,
+   * vermelha ou verde, dependendo se é Depósito(verde), Transferência(vermelho) ou Pagamento(vermelho).
+   * 
+   * @param {State} obj 
+   */
   renderItem(obj) {
     return obj.item['description'] && obj.item['description'] === 'Depósito' ?
     (<RenderItem obj={obj.item} color={'green'}/>) :
@@ -24,6 +27,11 @@ class Statement extends React.Component {
     (<RenderItem obj={obj.item} color={'red'}/>) : null
   }
 
+  /**
+   * @description: renderiza duas opções de telas.
+   * 1) uma View caso o usuário já tenha feito transações.
+   * 2) uma View se o usuário ainda não fez transações
+   */
   render() {
     return (
       <>

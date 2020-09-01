@@ -6,15 +6,18 @@ import { styles } from './styles'
 
 
 /**
- * @class StatementIcons
- * 
- * @description: .
+ * @class PayIcons
  * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-export default class StatementIcons extends React.Component {
+export default class PayIcons extends React.Component {
 
+  /**
+   * @description: PayIcons é utilizado em NavBar.js.
+   * 
+   * @see src.components.home.NavBar.js
+   */
   render() {
     return (
       <>

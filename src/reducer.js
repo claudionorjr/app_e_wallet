@@ -1,7 +1,10 @@
 import { loggedUser } from './requirements/Login/auth'
 
+
 /**
  * @description: Reducer recebe dados do Action do Component e envia um novo estado.
+ * 
+ * @see /components/confirmation/...
  */
 export default function reducer (state = {response: false, account: {
                                                             "id": 0,

@@ -22,7 +22,8 @@ class Login extends React.Component {
   }
 
   /**
-   * @description: Renderiza a tela de "Login".
+   * @description: Renderiza a tela de "Login", faz a autenticação do usuário e se for válido,
+   * entra no sistema.
    */
   render() {
     return (

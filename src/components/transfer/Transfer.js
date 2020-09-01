@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
@@ -7,8 +7,6 @@ import NavBar from '../home/NavBar'
 
 /**
  * @class Transfer
- * 
- * @description: .
  * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
@@ -19,6 +17,11 @@ class Transfer extends React.Component {
     this.state = {inputAmount: '', inputDocument: ''}
   }
 
+  /**
+   * @description: Transfer.js renderiza a tela de transferência do sistema.
+   * 
+   * @see src.components.home.Home.js
+   */
   render() {
     return (
       <>

@@ -10,8 +10,6 @@ import { depositReceipts } from '../../requirements/receipts/receipts'
 /**
  * @class Deposit
  * 
- * @description: .
- * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
@@ -21,6 +19,11 @@ class Deposit extends ValidationComponent  {
     this.state = {inputAmount: ''}
   }
 
+  /**
+   * @description: Deposit.js renderiza a tela de deposito do sistema.
+   * 
+   * @see src.components.home.Home.js
+   */
   render() {
     return (
       <>

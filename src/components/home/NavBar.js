@@ -20,6 +20,10 @@ import { styles } from './styles'
  */
 class NavBar extends React.Component {
 
+  /**
+   * @description: Renderiza toda a parte de NavBar da aplicação, os ícones de 'Statement', 'Pay',
+   * Transfer e Deposit são gerenciados em './iconsOptions/...'
+   */
   render() {
     return (
       <View style={[styles.headHome, styles.shadow]}>

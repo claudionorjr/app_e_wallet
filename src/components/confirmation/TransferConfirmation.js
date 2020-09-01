@@ -11,13 +11,18 @@ import NavBar from '../home/NavBar'
 /**
  * @class Confirmation
  * 
- * @description: .
- * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
 class TransferConfirmation extends React.Component {
 
+  /**
+   * @description: Renderiza a tela de confirmação com duas opções.
+   * 1) Voltar - retorna para a tela de transferência.
+   * 2) Confirmar - continua executando as regras
+   * 
+   * @see /reducer.js
+   */
   render() {
     const {amount, document} = this.props.route.params
     return (

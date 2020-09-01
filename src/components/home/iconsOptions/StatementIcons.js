@@ -8,13 +8,16 @@ import { styles } from './styles'
 /**
  * @class StatementIcons
  * 
- * @description: .
- * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
 export default class StatementIcons extends React.Component {
 
+  /**
+   * @description: StatementIcons é utilizado em NavBar.js.
+   * 
+   * @see src.components.home.NavBar.js
+   */
   render() {
     return (
       <>

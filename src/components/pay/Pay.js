@@ -1,9 +1,8 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
-import { paymentReceipts } from '../../requirements/receipts/receipts'
 
 
 /**
@@ -20,6 +19,11 @@ class Pay extends React.Component {
     this.state = {inputAmount: ''}
   }
 
+  /**
+   * @description: Pay.js renderiza a tela de pagamento do sistema.
+   * 
+   * @see src.components.home.Home.js
+   */
   render() {
     return (
       <>

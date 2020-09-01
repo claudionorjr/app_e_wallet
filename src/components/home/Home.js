@@ -18,17 +18,18 @@ const Stack = createStackNavigator()
 /**
  * @class Home
  * 
- * @description: .
- * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
 class Home extends React.Component {
 
+  /**
+   * @description: renderiza um 'NavigationContainer' e gerencia todas as rotas. 
+   */
   render() {
     return (
       <>
-        <NavigationContainer >
+        <NavigationContainer>
           <Stack.Navigator initialRouteName="Statement" screenOptions={{
             headerShown: false
           }}>
