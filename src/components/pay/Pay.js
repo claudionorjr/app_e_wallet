@@ -36,10 +36,8 @@ class Pay extends React.Component {
           </>
 
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-            this.props.dispatch({type: 'validate/payment', payment: +this.state.inputAmount})
-            let textToWatsApp = paymentReceipts(this.state.inputAmount)
+            this.props.navigation.navigate('PaymentConfirmation', {amount: this.state.inputAmount})
             this.setState({inputAmount: ''})
-            Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           }}>
             <Text>PAGAR</Text>
           </TouchableOpacity>

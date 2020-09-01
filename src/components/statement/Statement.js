@@ -1,7 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList } from 'react-native'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faInfo, faDollarSign, faCalendarAlt} from '@fortawesome/free-solid-svg-icons'
+import { Text, View, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
 import RenderItem from './RenderItem'
@@ -30,12 +28,20 @@ class Statement extends React.Component {
     return (
       <>
         <NavBar navigation={this.props.navigation} type={'Statement'}/>
-        <Text style={{fontSize: 22, fontWeight: "bold", marginLeft: 10}}>Extrato:</Text>
-        <FlatList style={styles.flatList} data={this.props.account.transactions} 
+        {this.props.account.transactions.length > 0 ?
+          (<FlatList style={styles.flatList} data={this.props.account.transactions} 
           keyExtractor={(item) => String(item['transaction_id'])}
-          renderItem={(item) => {
-            return this.renderItem(item)
-        }}/>
+          renderItem={(item) => this.renderItem(item)}/>)
+          : 
+          (<View style={[styles.infoArea, styles.shadow]}>
+              <Text style={{fontSize: 20, width: '90%', textAlign: 'center', paddingBottom: 75}}>Faça um depósito e coloque sua vida financeira em ordem.</Text>
+              <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
+                this.props.navigation.navigate('Deposit')
+              }}>
+                <Text>DEPOSITAR</Text>
+              </TouchableOpacity>
+            </View>)
+        }
       </>
     )
   }

@@ -36,10 +36,8 @@ class Deposit extends ValidationComponent  {
           </>
 
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-            this.props.dispatch({type: 'validate/deposit', deposit: +this.state.inputAmount})
-            let textToWatsApp = depositReceipts(this.state.inputAmount)
+            this.props.navigation.navigate('DepositConfirmation', {amount: this.state.inputAmount})
             this.setState({inputAmount: ''})
-            Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           }}>
             <Text>DEPOSITAR</Text>
           </TouchableOpacity>

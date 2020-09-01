@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
 import { connect } from 'react-redux'
-import { transferReceipts } from '../../requirements/receipts/receipts'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
 
@@ -25,7 +24,7 @@ class Transfer extends React.Component {
       <>
         <NavBar navigation={this.props.navigation} type={'Transfer'}/>
         <View style={styles.formArea}>
-          <Text>CPF do Recebedor</Text>
+          <Text>CPF/CNPJ do Recebedor</Text>
           <TextInput
             keyboardType="numeric"
             onChangeText={(number) => this.setState({inputDocument: (number.replace(/\D/g,''))})}
@@ -43,10 +42,8 @@ class Transfer extends React.Component {
 
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           if(this.state.inputDocument.length == 11 || this.state.inputDocument.length == 14) {
-            this.props.dispatch({type: 'validate/transfer', transferAmount: +this.state.inputAmount, transferDocument: this.state.inputDocument})
-            let textToWatsApp = transferReceipts(this.state.inputAmount, this.state.inputDocument)
+            this.props.navigation.navigate('TransferConfirmation', {amount: this.state.inputAmount, document: this.state.inputDocument})
             this.setState({inputAmount: '', inputDocument: ''})
-            Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           } else {
             alert("Documento precisa ter '11' caracteres para CPF e '14' para CNPJ.")
           }

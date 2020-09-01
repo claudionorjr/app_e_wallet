@@ -6,7 +6,7 @@ export const loginDaties = {
     "name": "Claudionor Silva",
     "accountBank": "987654-5",
     "agency": "0301",
-    "amount": 535.45,
+    "amount": 0.00,
     "transactions": []
 
 }

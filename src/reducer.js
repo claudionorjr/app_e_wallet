@@ -31,7 +31,7 @@ export default function reducer (state = {response: false, account: {
       let deposit = parseFloat(action.deposit)
       let amount = state.account.amount + deposit
       let transaction = {"transaction_id": id, "description":"Depósito", "date": dateFormat, "value": action.deposit}
-      let transactions = [ ...state.account.transactions, transaction]
+      let transactions = [ transaction, ...state.account.transactions]
       let account = { ...state.account, amount, transactions }
       return {
           ...state,
@@ -41,7 +41,7 @@ export default function reducer (state = {response: false, account: {
       let payment = parseFloat(action.payment)
       amount = state.account.amount - payment
       transaction = {"transaction_id": id, "description":"Pagamento", "date": dateFormat, "value": action.payment}
-      transactions = [ ...state.account.transactions, transaction ]
+      transactions = [ transaction, ...state.account.transactions ]
       account = { ...state.account, amount, transactions }
       return {
           ...state,
@@ -50,7 +50,7 @@ export default function reducer (state = {response: false, account: {
     case 'validate/transfer':
       amount = (state.account.amount - action.transferAmount)
       transaction = {"transaction_id": id, "documentReceiver": action.transferDocument, "description":"Transferência", "date": dateFormat, "value": action.transferAmount}
-      transactions = [ ...state.account.transactions, transaction ]
+      transactions = [ transaction, ...state.account.transactions ]
       account = { ...state.account, amount, transactions }
       return {
           ...state,

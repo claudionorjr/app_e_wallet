@@ -8,6 +8,9 @@ import Transfer from '../transfer/Transfer'
 import Pay from '../pay/Pay'
 import Deposit from '../deposit/Deposit'
 import Login from '../login/Login'
+import TransferConfirmation from '../confirmation/TransferConfirmation'
+import PaymentConfirmation from '../confirmation/PaymentConfirmation'
+import DepositConfirmation from '../confirmation/DepositConfirmation'
 
 
 const Stack = createStackNavigator()
@@ -34,6 +37,9 @@ class Home extends React.Component {
               <Stack.Screen name="Transfer" component={Transfer} />
               <Stack.Screen name="Deposit" component={Deposit} />
               <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="TransferConfirmation" component={TransferConfirmation} />
+              <Stack.Screen name="PaymentConfirmation" component={PaymentConfirmation} />
+              <Stack.Screen name="DepositConfirmation" component={DepositConfirmation} />
           </Stack.Navigator>
         </NavigationContainer>
       </>

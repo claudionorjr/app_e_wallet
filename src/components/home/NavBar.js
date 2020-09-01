@@ -38,7 +38,7 @@ class NavBar extends React.Component {
         </View>
         <View style={styles.amount}>
           <Text style={{fontSize: 32, fontWeight: "bold"}}>
-            Saldo <FontAwesomeIcon size={22} icon={ faDollarSign } />{(Number(this.props.account.amount)).toFixed(2)}
+            R$ {(Number(this.props.account.amount)).toFixed(2)}
           </Text>
         </View>
         {
