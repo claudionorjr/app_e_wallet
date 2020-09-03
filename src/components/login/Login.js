@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, Text, TouchableOpacity } from 'react-native'
+import { View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
@@ -9,8 +9,6 @@ import { validateUser } from '../../requirements/Login/auth'
 
 /**
  * @class Login
- * 
- * @description: .
  * 
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
@@ -29,10 +27,10 @@ class Login extends React.Component {
     return (
       <>
         <View style={[styles.iconLoginArea, styles.shadow]}>
-          <FontAwesomeIcon size={80} icon={ faWallet } />
-          <Text style={{fontSize: 21, paddingTop: 21, fontWeight: "bold"}}>E-Carteira</Text>
+          <Text style={{padding: 23}}><FontAwesomeIcon size={80} icon={ faWallet } /></Text>
+          <Text style={{fontSize: 20, padding: 23, fontWeight: "bold"}}>E-Carteira</Text>
         </View>
-        <View style={styles.inputLoginArea}>
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height" } style={styles.inputLoginArea}>
           <TextInput keyboardType="email-address" style={[styles.input, styles.shadow]}
           onChangeText={(text) => {
                 this.setState({inputLogin: {'email': text, 'password': this.state.inputLogin.password}})
@@ -56,9 +54,9 @@ class Login extends React.Component {
             }
             this.setState({inputLogin: {'email': '', 'password': ''}})
           }}>
-            <Text>LOGAR</Text>
+            <Text>ENTRAR</Text>
           </TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
       </>
     )
   }

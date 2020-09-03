@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { styles } from './styles'
 import RenderItem from './RenderItem'
 import NavBar from '../home/NavBar'
+import Filter from './Filter'
 
 
 /**
@@ -37,9 +38,16 @@ class Statement extends React.Component {
       <>
         <NavBar navigation={this.props.navigation} type={'Statement'}/>
         {this.props.account.transactions.length > 0 ?
-          (<FlatList style={styles.flatList} data={this.props.account.transactions} 
-          keyExtractor={(item) => String(item['transaction_id'])}
-          renderItem={(item) => this.renderItem(item)}/>)
+          (
+          <>
+            <View style={{flexDirection: 'row', justifyContent:'space-evenly', padding: 10}}>
+              <Filter></Filter>
+            </View>
+            <FlatList style={styles.flatList} data={this.props.account.transactions} 
+            keyExtractor={(item) => String(item['transaction_id'])}
+            renderItem={(item) => this.renderItem(item)}/>
+          </>
+          )
           : 
           (<View style={[styles.infoArea, styles.shadow]}>
               <Text style={{fontSize: 20, width: '90%', textAlign: 'center', paddingBottom: 75}}>Faça um depósito e coloque sua vida financeira em ordem.</Text>

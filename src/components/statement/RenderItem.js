@@ -14,7 +14,7 @@ import { styles } from './styles'
 export default class RenderItem extends React.Component {
 
   /**
-   * @description: Este objeto é chamdo em uma FlatList para renderizar uma
+   * @description: Este objeto é chamado em uma FlatList para renderizar uma
    * determinada linha.
    * 
    * @see /Statement.js

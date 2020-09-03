@@ -1,10 +1,9 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity, Linking } from 'react-native'
-import ValidationComponent from 'react-native-form-validator'
+import { Text, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
-import { depositReceipts } from '../../requirements/receipts/receipts'
+import dinnerMask from '../../requirements/maskFields/dinnerField'
 
 
 /**
@@ -13,7 +12,7 @@ import { depositReceipts } from '../../requirements/receipts/receipts'
  * @author Claudionor Silva <claudionor.junior1994@gmail.com>
  * @version 1.0.0
  */
-class Deposit extends ValidationComponent  {
+class Deposit extends React.Component  {
   constructor(props) {
     super(props)
     this.state = {inputAmount: ''}
@@ -28,23 +27,27 @@ class Deposit extends ValidationComponent  {
     return (
       <>
         <NavBar navigation={this.props.navigation} type={'Deposit'} />
-        <View style={styles.depositArea}>
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height" } style={styles.depositArea}>
           <>
             <Text>Valor do depósito</Text>
             <TextInput style={[styles.input, styles.shadow]}
               keyboardType="numeric"
-              onChangeText={(number) => this.setState({inputAmount: ((number.replace(/\D/g,'')) / 100).toFixed(2)})}
+              onChangeText={(number) => this.setState({inputAmount: dinnerMask(number)})}
               placeholder="Valor..."
               value={this.state.inputAmount.toString()} />
           </>
 
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-            this.props.navigation.navigate('DepositConfirmation', {amount: this.state.inputAmount})
-            this.setState({inputAmount: ''})
+            if(this.state.inputAmount != '') {
+              this.props.navigation.navigate('DepositConfirmation', {amount: this.state.inputAmount})
+              this.setState({inputAmount: ''})
+            } else {
+              alert("Campo Valor obrigatório.")
+            }
           }}>
             <Text>DEPOSITAR</Text>
           </TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
       </>
     )
   }
