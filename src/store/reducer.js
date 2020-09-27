@@ -1,4 +1,4 @@
-import { loggedUser } from './requirements/Login/auth'
+import { loggedUser } from '../requirements/Login/auth'
 
 export default function reducer (
   state = {
