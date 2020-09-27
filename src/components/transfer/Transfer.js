@@ -6,24 +6,12 @@ import NavBar from '../home/NavBar'
 import documentField from '../../requirements/maskFields/documentField'
 import dinnerMask from '../../requirements/maskFields/dinnerField'
 
-
-/**
- * @class Transfer
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class Transfer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {inputAmount: '', inputDocument: ''}
   }
 
-  /**
-   * @description: Transfer.js renderiza a tela de transferência do sistema.
-   * 
-   * @see src.components.home.Home.js
-   */
   render() {
     return (
       <>

@@ -1,22 +1,24 @@
 import { loggedUser } from './requirements/Login/auth'
 
-
-/**
- * @description: Reducer recebe dados do Action do Component e envia um novo estado.
- * 
- * @see /components/confirmation/...
- */
-export default function reducer (state = {response: false, account: {
-                                                            "id": 0,
-                                                            "email": "",
-                                                            "password": "",
-                                                            "phone": "",
-                                                            "name": '',
-                                                            "accountBank": "",
-                                                            "agency": "",
-                                                            "amount": 0.00,
-                                                            "transactions": []
-                                                            }, deposit: '', errorMessage: ''}, action){
+export default function reducer (
+  state = {
+    response: false,
+    account: 
+      {
+        "id": 0,
+        "email": "",
+        "password": "",
+        "phone": "",
+        "name": '',
+        "accountBank": "",
+        "agency": "",
+        "amount": 0.00,
+        "transactions": []
+      },
+      deposit: '',
+      errorMessage: ''},
+      action
+){
 
   const id = (state.account.transactions.length) + 1
   const date = new Date()

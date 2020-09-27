@@ -12,20 +12,10 @@ import TransferConfirmation from '../confirmation/TransferConfirmation'
 import PaymentConfirmation from '../confirmation/PaymentConfirmation'
 import DepositConfirmation from '../confirmation/DepositConfirmation'
 
-
 const Stack = createStackNavigator()
 
-/**
- * @class Home
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class Home extends React.Component {
 
-  /**
-   * @description: renderiza um 'NavigationContainer' e gerencia todas as rotas. 
-   */
   render() {
     return (
       <>

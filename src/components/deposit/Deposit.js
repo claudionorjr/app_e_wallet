@@ -5,24 +5,12 @@ import { styles } from './styles'
 import NavBar from '../home/NavBar'
 import dinnerMask from '../../requirements/maskFields/dinnerField'
 
-
-/**
- * @class Deposit
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class Deposit extends React.Component  {
   constructor(props) {
     super(props)
     this.state = {inputAmount: ''}
   }
 
-  /**
-   * @description: Deposit.js renderiza a tela de deposito do sistema.
-   * 
-   * @see src.components.home.Home.js
-   */
   render() {
     return (
       <>

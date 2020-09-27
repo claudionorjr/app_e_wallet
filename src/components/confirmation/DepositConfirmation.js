@@ -7,22 +7,8 @@ import { depositReceipts } from '../../requirements/receipts/receipts'
 import { styles } from './styles'
 import NavBar from '../home/NavBar'
 
-
-/**
- * @class DepositConfirmation
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class DepositConfirmation extends React.Component {
 
-  /**
-   * @description: Renderiza a tela de confirmação com duas opções.
-   * 1) Voltar - retorna para a tela de depósito.
-   * 2) Confirmar - continua executando as regras
-   * 
-   * @see /reducer.js
-   */
   render() {
     const { amount } = this.props.route.params
     return (

@@ -1,23 +1,11 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faHome, faUser, faArrowAltCircleDown, faBarcode } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faArrowAltCircleDown, faBarcode } from '@fortawesome/free-solid-svg-icons'
 import { styles } from './styles'
 
-
-/**
- * @class TransferIcons
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 export default class TransferIcons extends React.Component {
 
-  /**
-   * @description: StatementIcons é utilizado em NavBar.js.
-   * 
-   * @see src.components.home.NavBar.js
-   */
   render() {
     return (
       <>

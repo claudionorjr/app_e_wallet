@@ -6,23 +6,12 @@ import { faWallet } from '@fortawesome/free-solid-svg-icons'
 import { styles } from './styles'
 import { validateUser } from '../../requirements/Login/auth'
 
-
-/**
- * @class Login
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {inputLogin: {'email': '', 'password': ''}}
   }
 
-  /**
-   * @description: Renderiza a tela de "Login", faz a autenticação do usuário e se for válido,
-   * entra no sistema.
-   */
   render() {
     return (
       <>

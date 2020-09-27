@@ -2,28 +2,15 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faSignOutAlt, faDollarSign } from '@fortawesome/free-solid-svg-icons'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import StatementIcons from './iconsOptions/StatementIcons'
 import PayIcons from './iconsOptions/PayIcons'
 import TransferIcons from './iconsOptions/TransferIcons'
 import DepositIcons from './iconsOptions/DepositIcons'
 import { styles } from './styles'
 
-
-/**
- * @class NavBar
- * 
- * @description: .
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class NavBar extends React.Component {
 
-  /**
-   * @description: Renderiza toda a parte de NavBar da aplicação, os ícones de 'Statement', 'Pay',
-   * Transfer e Deposit são gerenciados em './iconsOptions/...'
-   */
   render() {
     return (
       <View style={[styles.headHome, styles.shadow]}>

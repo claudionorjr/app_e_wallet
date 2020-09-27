@@ -5,26 +5,12 @@ import { styles } from './styles'
 import NavBar from '../home/NavBar'
 import dinnerMask from '../../requirements/maskFields/dinnerField'
 
-
-/**
- * @class Pay
- * 
- * @description: .
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class Pay extends React.Component {
   constructor(props) {
     super(props)
     this.state = {inputAmount: ''}
   }
 
-  /**
-   * @description: Pay.js renderiza a tela de pagamento do sistema.
-   * 
-   * @see src.components.home.Home.js
-   */
   render() {
     return (
       <>

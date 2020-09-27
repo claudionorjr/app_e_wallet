@@ -1,3 +1,3 @@
 export default function documentMask(number) {
-    return (number.replace(/\D/g,''))
-  }
+  return (number.replace(/\D/g,''))
+}

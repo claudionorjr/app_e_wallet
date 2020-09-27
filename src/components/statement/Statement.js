@@ -6,13 +6,6 @@ import { styles } from './styles'
 import RenderItem from './RenderItem'
 import NavBar from '../home/NavBar'
 
-
-/**
- * @class Statement
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 class Statement extends React.Component {
   constructor(props) {
     super(props)
@@ -20,9 +13,6 @@ class Statement extends React.Component {
     this.state = {beginDate: toDay.setMonth(toDay.getMonth() - 1), finalDate: new Date(), date: 'initial', show: false, selectedDate: false}
   }
 
-  /**
-   * @description: quando o 'state' for modificado vai atualiazar o 'this.state.beginDate' e 'this.state.finalDate'.
-   */
   componentDidUpdate(){
     if(this.state.selectedDate){
       const typeDate = this.state.date
@@ -35,9 +25,6 @@ class Statement extends React.Component {
     }
   }
 
-  /**
-   * @description: função usada para setar qual o tipo de 'date' está setada conforme o botão usado.
-   */
   pickInitialDate = () => {
     this.setState({
       show: true,
@@ -45,9 +32,6 @@ class Statement extends React.Component {
     })
   }
 
-  /**
-   * @description: função usada para setar qual o tipo de 'date' está setada conforme o botão usado.
-   */
   pickFinalDate = () => {
     this.setState({
       show: true,
@@ -55,12 +39,6 @@ class Statement extends React.Component {
     })
   }
 
-  /**
-   * @description: Recebe um array 'this.props.account.transactions' transforma as datas em 'new Date()'
-   * e adiciona em um novo Array o objeto filtrado.
-   * 
-   * @param {Array} array 
-   */
   getAllFilteredItems(array) {
     let newArray = []
     array.forEach(element => {
@@ -73,12 +51,6 @@ class Statement extends React.Component {
     return newArray
   }
 
-  /**
-   * @description: Se o usuário já tem transações, vai ser rederizado uma linha da FlatList,
-   * vermelha ou verde, dependendo se é Depósito(verde), Transferência(vermelho) ou Pagamento(vermelho).
-   * 
-   * @param {State} obj 
-   */
   renderItem(obj) {
     return obj.item['description'] && obj.item['description'] === 'Depósito' ?
     (<RenderItem obj={obj.item} color={'green'}/>) :
@@ -86,11 +58,6 @@ class Statement extends React.Component {
     (<RenderItem obj={obj.item} color={'red'}/>) : null
   }
 
-  /**
-   * @description: renderiza duas opções de telas.
-   * 1) uma View caso o usuário já tenha feito transações.
-   * 2) uma View se o usuário ainda não fez transações
-   */
   render() {
     return (
       <>

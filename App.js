@@ -6,7 +6,6 @@ import Login from './src/components/login/Login'
 import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from './src/configureStore'
 
-
 const {store, persistor} = configureStore()
 
 export default function App() {
@@ -19,11 +18,6 @@ export default function App() {
     )
 }
 
-/**
- * @description: Componente renderiza Home se props.response for 'true' ou Login caso seja 'false', 
- * 
- * @param {State} props 
- */
 const LoginGate = (props) => {
   let loggedIn = props.response
   return loggedIn ? (<Home />) : (<Login />)

@@ -4,21 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt} from '@fortawesome/free-solid-svg-icons'
 import { styles } from './styles'
 
-
-/**
- * @class RenderItem
- * 
- * @author Claudionor Silva <claudionor.junior1994@gmail.com>
- * @version 1.0.0
- */
 export default class RenderItem extends React.Component {
 
-  /**
-   * @description: Este objeto é chamado em uma FlatList para renderizar uma
-   * determinada linha.
-   * 
-   * @see /Statement.js
-   */
   render() {
     return (
       <View style={styles.card}>
