@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import Home from './src/components/home/Home'
-import Login from './src/screens/Login'
-import configureStore from './src/store/configureStore'
+import Home from './components/home/Home'
+import Login from './screens/Login'
+import configureStore from './store/configureStore'
 
 const {store, persistor} = configureStore()
 
