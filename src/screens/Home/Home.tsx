@@ -8,9 +8,9 @@ import Transfer from '../Transfer'
 import Pay from '../Pay'
 import Deposit from '../Deposit'
 import Login from '../Login'
-import TransferConfirmation from '../confirmation/TransferConfirmation'
-import PaymentConfirmation from '../confirmation/PaymentConfirmation'
-import DepositConfirmation from '../confirmation/DepositConfirmation'
+import TransferConfirmation from '../Confirmation/TransferConfirmation'
+import PaymentConfirmation from '../Confirmation/PaymentConfirmation'
+import DepositConfirmation from '../Confirmation/DepositConfirmation'
 
 const Stack = createStackNavigator()
 

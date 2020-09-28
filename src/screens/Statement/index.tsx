@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { styles } from './styles'
 import RenderItem from './RenderItem'
-import NavBar from '../../components/home/NavBar'
+import NavBar from '../Home/NavBar'
 
 const Statement = (props) => {
 
@@ -16,9 +16,9 @@ const Statement = (props) => {
   const [selectedDate, setSelectedDate] = useState(false)
 
   useEffect(() => {
-    if(selectedDate){
-      let begin : any = date === 'initial' ? selectedDate : beginDate
-      let final : any = date !== "initial" ? selectedDate : finalDate
+    if (selectedDate) {
+      let begin: any = date === 'initial' ? selectedDate : beginDate
+      let final: any = date !== "initial" ? selectedDate : finalDate
       setBeginDate(begin)
       setFinalDate(final)
       setShow(Platform.OS === 'ios')
@@ -41,7 +41,7 @@ const Statement = (props) => {
     array.forEach(element => {
       let elDateArr = element.date.split('-');
       let elDate = new Date(`${elDateArr[1]}/${elDateArr[0]}/${elDateArr[2]}`)
-      if(elDate > beginDate && elDate < finalDate){
+      if (elDate > beginDate && elDate < finalDate) {
         newArray.push(element)
       }
     })
@@ -50,48 +50,48 @@ const Statement = (props) => {
 
   const renderItem = (obj) => {
     return obj.item['description'] && obj.item['description'] === 'Depósito' ?
-    (<RenderItem obj={obj.item} color={'green'}/>) :
-    obj.item['description'] === 'Transferência' || obj.item['description'] === 'Pagamento' ?
-    (<RenderItem obj={obj.item} color={'red'}/>) : null
+      (<RenderItem obj={obj.item} color={'green'} />) :
+      obj.item['description'] === 'Transferência' || obj.item['description'] === 'Pagamento' ?
+        (<RenderItem obj={obj.item} color={'red'} />) : null
   }
 
   return (
     <>
-      <NavBar navigation={props.navigation} type={'Statement'}/>
+      <NavBar navigation={props.navigation} type={'Statement'} />
       {props.account.transactions.length > 0 ?
         (
-        <>
-          <View style={{flexDirection: 'row', justifyContent:'space-evenly', padding: 10, backgroundColor: "#f0f0f0"}}>
-          <Button color="#FCB50D" onPress={pickInitialDate} title="data inicial" />
-          <Button color="#FCB50D" onPress={pickFinalDate} title="data final" />
-          {show && (
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={date === 'initial' ? beginDate : finalDate}
-              mode={'date'}
-              is24Hour={true}
-              display="calendar"
-              onChange={(e,currentDate) => {
-                setShow(false)
-                setSelectedDate(currentDate)
-              }}
-            />
-          )}
-          </View>
-          <FlatList style={styles.flatList} data={getAllFilteredItems(props.account.transactions)} 
-          keyExtractor={(item) => String(item['transaction_id'])}
-          renderItem={(item) => renderItem(item)}/>
-        </>
+          <>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 10, backgroundColor: "#f0f0f0" }}>
+              <Button color="#FCB50D" onPress={pickInitialDate} title="data inicial" />
+              <Button color="#FCB50D" onPress={pickFinalDate} title="data final" />
+              {show && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={date === 'initial' ? beginDate : finalDate}
+                  mode={'date'}
+                  is24Hour={true}
+                  display="calendar"
+                  onChange={(e, currentDate) => {
+                    setShow(false)
+                    setSelectedDate(currentDate)
+                  }}
+                />
+              )}
+            </View>
+            <FlatList style={styles.flatList} data={getAllFilteredItems(props.account.transactions)}
+              keyExtractor={(item) => String(item['transaction_id'])}
+              renderItem={(item) => renderItem(item)} />
+          </>
         )
-        : 
+        :
         (<View style={[styles.infoArea, styles.shadow]}>
-            <Text style={{fontSize: 20, width: '90%', textAlign: 'center', paddingBottom: 75}}>Faça um depósito e coloque sua vida financeira em ordem.</Text>
-            <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-              props.navigation.navigate('Deposit')
-            }}>
-              <Text>DEPOSITAR</Text>
-            </TouchableOpacity>
-          </View>)
+          <Text style={{ fontSize: 20, width: '90%', textAlign: 'center', paddingBottom: 75 }}>Faça um depósito e coloque sua vida financeira em ordem.</Text>
+          <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
+            props.navigation.navigate('Deposit')
+          }}>
+            <Text>DEPOSITAR</Text>
+          </TouchableOpacity>
+        </View>)
       }
     </>
   )

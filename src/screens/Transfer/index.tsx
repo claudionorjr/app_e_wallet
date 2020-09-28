@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
-import NavBar from '../../components/home/NavBar'
+import NavBar from '../Home/NavBar'
 import documentField from '../../requirements/maskFields/documentField'
 import dinnerMask from '../../requirements/maskFields/dinnerField'
 
@@ -12,7 +12,7 @@ const Transfer = (props) => {
 
   return (
     <>
-      <NavBar navigation={props.navigation} type={'Transfer'}/>
+      <NavBar navigation={props.navigation} type={'Transfer'} />
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.formArea}>
         <Text>CPF/CNPJ do Recebedor</Text>
         <TextInput
@@ -21,7 +21,7 @@ const Transfer = (props) => {
           value={inputDocument.toString()}
           style={[styles.input, styles.shadow]}
           placeholder="CPF..." />
-        
+
         <Text>Valor da Transferência</Text>
         <TextInput
           keyboardType="numeric"
@@ -31,9 +31,9 @@ const Transfer = (props) => {
           placeholder="Valor..." />
 
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          if(inputDocument.length == 11 || inputDocument.length == 14) {
-            if(inputAmount != ''){
-              props.navigation.navigate('TransferConfirmation', {amount: inputAmount, document: inputDocument})
+          if (inputDocument.length == 11 || inputDocument.length == 14) {
+            if (inputAmount != '') {
+              props.navigation.navigate('TransferConfirmation', { amount: inputAmount, document: inputDocument })
               setinputDocument('')
               setinputAmount('')
             } else {
@@ -43,7 +43,7 @@ const Transfer = (props) => {
             alert("Documento precisa ter '11' caracteres para CPF e '14' para CNPJ.")
           }
         }}>
-            <Text>TRANSFERIR</Text>
+          <Text>TRANSFERIR</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </>

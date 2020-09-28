@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons'
 import { paymentReceipts } from '../../requirements/receipts/receipts'
 import { styles } from './styles'
-import NavBar from '../home/NavBar'
+import NavBar from '../Home/NavBar'
 
 const PaymentConfirmation = (props) => {
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
-import NavBar from '../../components/home/NavBar'
+import NavBar from '../Home/NavBar'
 import dinnerMask from '../../requirements/maskFields/dinnerField'
 
 const Deposit = (props) => {
@@ -10,7 +10,7 @@ const Deposit = (props) => {
   return (
     <>
       <NavBar navigation={props.navigation} type={'Deposit'} />
-      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height" } style={styles.depositArea}>
+      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.depositArea}>
         <>
           <Text>Valor do depósito</Text>
           <TextInput style={[styles.input, styles.shadow]}
@@ -21,8 +21,8 @@ const Deposit = (props) => {
         </>
 
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          if(inputAmount != '') {
-            props.navigation.navigate('DepositConfirmation', {amount: inputAmount})
+          if (inputAmount != '') {
+            props.navigation.navigate('DepositConfirmation', { amount: inputAmount })
             setinputAmount('')
           } else {
             alert("Campo Valor obrigatório.")
