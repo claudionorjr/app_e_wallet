@@ -3,6 +3,7 @@ import { View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView, Platform
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
+
 import { styles } from './styles'
 import { validateUser } from '../../requirements/Login/auth'
 
@@ -13,10 +14,10 @@ const Login = (props) => {
   return (
     <>
       <View style={[styles.iconLoginArea, styles.shadow]}>
-        <Text style={{padding: 23}}><FontAwesomeIcon size={80} icon={ faWallet } /></Text>
-        <Text style={{fontSize: 20, padding: 23, fontWeight: "bold"}}>E-Carteira</Text>
+        <Text style={{ padding: 23 }}><FontAwesomeIcon size={80} icon={faWallet} /></Text>
+        <Text style={{ fontSize: 20, padding: 23, fontWeight: "bold" }}>E-Carteira</Text>
       </View>
-      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height" } style={styles.inputLoginArea}>
+      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.inputLoginArea}>
         <TextInput
           keyboardType="email-address"
           style={[styles.input, styles.shadow]}
@@ -24,7 +25,7 @@ const Login = (props) => {
           }
           placeholder="E-Mail"
           value={inputEmail}
-        /> 
+        />
 
         <TextInput
           secureTextEntry={true}
@@ -33,11 +34,11 @@ const Login = (props) => {
           placeholder="Password"
           value={inputPassword}
         />
-          
+
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           const response = validateUser(inputEmail, inputPassword)
           if (response.message == 'authenticated') {
-            props.dispatch({type: 'login', response: true})
+            props.dispatch({ type: 'login', response: true })
           } else {
             alert('E-mail ou senha incorretos!')
           }
@@ -54,5 +55,5 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return { response: state.response }
 }
-  
+
 export default connect(mapStateToProps)(Login)
