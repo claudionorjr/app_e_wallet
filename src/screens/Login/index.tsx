@@ -4,12 +4,25 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 
+import Button from '../../components/Button';
+import Input from '../../components/Input'
 import { styles } from './styles'
 import { validateUser } from '../../requirements/Login/auth'
 
 const Login = (props) => {
-  const [inputEmail, setinputEmail] = useState('')
-  const [inputPassword, setinputPassword] = useState('')
+  const [inputEmail, setInputEmail] = useState('')
+  const [inputPassword, setInputPassword] = useState('')
+
+  const submit = () => {
+    const response = validateUser(inputEmail, inputPassword)
+    if (response.message == 'authenticated') {
+      props.dispatch({ type: 'login', response: true })
+    } else {
+      alert('E-mail ou senha incorretos!')
+    }
+    setInputPassword('')
+    setInputEmail('')
+  }
 
   return (
     <>
@@ -18,35 +31,18 @@ const Login = (props) => {
         <Text style={{ fontSize: 20, padding: 23, fontWeight: "bold" }}>E-Carteira</Text>
       </View>
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.inputLoginArea}>
-        <TextInput
-          keyboardType="email-address"
-          style={[styles.input, styles.shadow]}
-          onChangeText={(text) => setinputEmail(text)
-          }
-          placeholder="E-Mail"
-          value={inputEmail}
+        <Input
+          defaultValue={inputEmail}
+          onChangeText={setInputEmail}
+          placeholder={'E-mail'}
         />
-
-        <TextInput
-          secureTextEntry={true}
-          style={[styles.input, styles.shadow]}
-          onChangeText={(text) => setinputPassword(text)}
-          placeholder="Password"
-          value={inputPassword}
+        <Input
+          defaultValue={inputPassword}
+          onChangeText={setInputPassword}
+          placeholder={'Senha'}
+          secureTextEntry
         />
-
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          const response = validateUser(inputEmail, inputPassword)
-          if (response.message == 'authenticated') {
-            props.dispatch({ type: 'login', response: true })
-          } else {
-            alert('E-mail ou senha incorretos!')
-          }
-          setinputPassword('')
-          setinputEmail('')
-        }}>
-          <Text>ENTRAR</Text>
-        </TouchableOpacity>
+        <Button onPress={submit} text={'Entrar'} />
       </KeyboardAvoidingView>
     </>
   )

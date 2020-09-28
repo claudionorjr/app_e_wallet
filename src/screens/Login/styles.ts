@@ -1,6 +1,20 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native';
 
+import Colors from '../../assets/Colors';
+
+export const HeadArea = styled.View`
+  background-color: ${Colors.primary};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const InputArea = styled.View`
+  background-color: ${Colors.background};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const styles = StyleSheet.create({
   iconLoginArea: {
