@@ -5828,10 +5828,22 @@ react-native-iphone-x-helper@^1.2.1:
   resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha1-ZF4v+7tJ6AhEu0y740oSb9oeZ3I=
 
+react-native-reanimated@^1.13.1:
+  version "1.13.1"
+  resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/react-native-reanimated/-/react-native-reanimated-1.13.1.tgz#c370c32cc4d447ae896cb029bb9c6a2f7608c5b4"
+  integrity sha1-w3DDLMTUR66JbLApu5xqL3YIxbQ=
+  dependencies:
+    fbjs "^1.0.0"
+
 react-native-safe-area-context@^3.1.8:
   version "3.1.8"
   resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/react-native-safe-area-context/-/react-native-safe-area-context-3.1.8.tgz#7a9883aa0f38f9c77d4bef2b89e4e285bc1024a3"
   integrity sha1-epiDqg84+cd9S+8rieTihbwQJKM=
+
+react-native-screens@^2.11.0:
+  version "2.11.0"
+  resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/react-native-screens/-/react-native-screens-2.11.0.tgz#34b30b07c2d04aa100cba984b944b303bfa43ea6"
+  integrity sha1-NLMLB8LQSqEAy6mEuUSzA7+kPqY=
 
 react-native-svg@^12.1.0:
   version "12.1.0"

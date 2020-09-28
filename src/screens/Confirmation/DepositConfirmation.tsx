@@ -27,8 +27,8 @@ const DepositConfirmation = (props) => {
         </TouchableOpacity>
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           props.dispatch({ type: 'validate/deposit', deposit: +amount })
-          let textToWatsApp = depositReceipts(amount)
-          Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
+          // let textToWatsApp = depositReceipts(amount)
+          // Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           props.navigation.navigate('Statement')
         }}>
           <Text>CONFIRMAR</Text>

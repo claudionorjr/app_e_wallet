@@ -31,8 +31,8 @@ const TransferConfirmation = (props) => {
         </TouchableOpacity>
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           props.dispatch({ type: 'validate/transfer', transferAmount: +amount, transferDocument: document })
-          let textToWatsApp = transferReceipts(amount, document)
-          Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
+          // let textToWatsApp = transferReceipts(amount, document)
+          // Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
           props.navigation.navigate('Statement')
         }}>
           <Text>CONFIRMAR</Text>

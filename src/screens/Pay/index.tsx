@@ -5,7 +5,7 @@ import { styles } from './styles'
 import NavBar from '../Home/NavBar'
 import dinnerMask from '../../requirements/maskFields/dinnerField'
 
-const pay = (props) => {
+const Pay = (props) => {
   const [inputAmount, setinputAmount] = useState('')
   return (
     <>
