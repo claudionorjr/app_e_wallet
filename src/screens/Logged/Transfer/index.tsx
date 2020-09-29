@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+
+import NavBar from '../../../components/NavBar'
 import { styles } from './styles'
 import documentField from '../../../requirements/maskFields/documentField'
 import dinnerMask from '../../../requirements/maskFields/dinnerField'
@@ -11,6 +13,7 @@ const Transfer = (props) => {
 
   return (
     <>
+      <NavBar text={'Transferir'} />
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.formArea}>
         <Text>CPF/CNPJ do Recebedor</Text>
         <TextInput

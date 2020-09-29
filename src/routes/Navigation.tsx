@@ -64,11 +64,11 @@ const Navigation = () => {
               />
             ),
           }} />
-          <Tab.Screen name="Transferência" component={Transfer} options={{
+          <Tab.Screen name="Transferir" component={Transfer} options={{
             tabBarLabel: ({ focused, color }) => focused ?
-              (<SmallText color={focused ? Colors.primary : color} text={'Transferência'} />)
+              (<SmallText color={focused ? Colors.primary : color} text={'Transferir'} />)
               :
-              (<SmallText color={focused ? Colors.primary : color} text={'Transferência'} />),
+              (<SmallText color={focused ? Colors.primary : color} text={'Transferir'} />),
             tabBarIcon: ({ focused, color, size }) => (
               <IconNavigation selected={focused}
                 selectedColor={Colors.primary}

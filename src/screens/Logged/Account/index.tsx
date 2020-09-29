@@ -1,22 +1,31 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { connect } from 'react-redux'
+import { faUserCircle, faUniversity, faCommentDots, faCreditCard, faMobileAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
-import { AccountDaties, AmountArea, ScreenUser } from './styles'
+import BigText from '../../../components/BigText'
+import MediumText from '../../../components/MediumText'
+import NavBar from '../../../components/NavBar'
+import Options from './Options'
+import { AccountDaties, AmountArea, ScreenUser, Welcome } from './styles'
 
 const Account = (props) => {
   return (
     <ScreenUser>
-      <AccountDaties>
-        <Text style={{ fontSize: 12 }}>Nome: {props.account.name}</Text>
-        <Text style={{ fontSize: 12 }}>Conta: {props.account.accountBank}</Text>
-        <Text style={{ fontSize: 12 }}>Agência: {props.account.agency}</Text>
-      </AccountDaties>
+      <NavBar text={'Conta'} />
+      <Welcome>
+        <MediumText padding={15} text={`Olá, ${props.account.name}`} />
+      </Welcome>
       <AmountArea>
-        <Text style={{ fontSize: 32, fontWeight: "bold" }}>
-          R$ {(Number(props.account.amount)).toFixed(2)}
-        </Text>
+        <BigText text={`R$ ${(Number(props.account.amount)).toFixed(2)}`} />
       </AmountArea>
+      <AccountDaties>
+        <Options text={`Conta ${props.account.accountBank}`} icon={faUserCircle} marginLeft={10} />
+        <Options text={`Agência ${props.account.agency}`} icon={faUniversity} marginLeft={10} />
+        <Options text={`Cartão R$ 0,00`} icon={faCreditCard} marginLeft={10} />
+        <Options text={`Recarga de Celular`} icon={faMobileAlt} marginLeft={10} />
+        <Options text={`Atendimento`} icon={faCommentDots} marginLeft={10} />
+        <Options text={`Sair`} icon={faSignOutAlt} marginLeft={10} />
+      </AccountDaties>
     </ScreenUser>
   )
 }

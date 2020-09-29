@@ -3,18 +3,22 @@ import styled from 'styled-components/native'
 import Colors from '../../../assets/Colors'
 
 export const ScreenUser = styled.View`
-  background-color: ${Colors.primary};
+  background-color: ${Colors.background};
   flex: 1;
 `;
 
+export const Welcome = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+
 export const AmountArea = styled.View`
-  align-items: 'center';
-  justify-content: 'space-evenly';
-  margin-bottom: 5px;
+  padding: 15px;
+  justify-content: center;
+  align-items:center;
 `;
 
 export const AccountDaties = styled.View`
-  align-items: 'center';
-  justify-content: 'space-evenly';
-  margin-bottom: 5px;
+  width: 100%;
+  flex-direction: column;
 `;

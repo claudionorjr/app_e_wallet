@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Text, View, FlatList, TouchableOpacity, Button, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker'
+
+import NavBar from '../../../components/NavBar'
 import { styles } from './styles'
 import RenderItem from './RenderItem'
 
@@ -56,6 +58,7 @@ const Statement = (props) => {
 
   return (
     <>
+      <NavBar text={'Extrato'} />
       {props.account.transactions.length > 0 ?
         (
           <>

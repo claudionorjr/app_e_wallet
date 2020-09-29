@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
 import { connect } from 'react-redux'
+
 import { styles } from './styles'
+import NavBar from '../../../components/NavBar'
 import dinnerMask from '../../../requirements/maskFields/dinnerField'
 
 const Deposit = (props) => {
   const [inputAmount, setinputAmount] = useState('')
   return (
     <>
+      <NavBar text={'Depositar'} />
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.depositArea}>
         <>
           <Text>Valor do depósito</Text>
