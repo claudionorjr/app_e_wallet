@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, FlatList, TouchableOpacity, Button, Platform } from 'react-native'
+import { Text, View, FlatList, TouchableOpacity, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker'
 
+import Button from '../../../components/Button'
 import NavBar from '../../../components/NavBar'
-import { styles } from './styles'
+import { styles, DateTime } from './styles'
 import RenderItem from './RenderItem'
 
 const Statement = (props) => {
@@ -62,9 +63,9 @@ const Statement = (props) => {
       {props.account.transactions.length > 0 ?
         (
           <>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 10, backgroundColor: "#f0f0f0" }}>
-              <Button color="#FCB50D" onPress={pickInitialDate} title="data inicial" />
-              <Button color="#FCB50D" onPress={pickFinalDate} title="data final" />
+            <DateTime>
+              <Button onPress={pickInitialDate} text="data inicial" />
+              <Button onPress={pickFinalDate} text="data final" />
               {show && (
                 <DateTimePicker
                   testID="dateTimePicker"
@@ -78,7 +79,7 @@ const Statement = (props) => {
                   }}
                 />
               )}
-            </View>
+            </DateTime>
             <FlatList style={styles.flatList} data={getAllFilteredItems(props.account.transactions)}
               keyExtractor={(item) => String(item['transaction_id'])}
               renderItem={(item) => renderItem(item)} />
@@ -88,7 +89,7 @@ const Statement = (props) => {
         (<View style={[styles.infoArea, styles.shadow]}>
           <Text style={{ fontSize: 20, width: '90%', textAlign: 'center', paddingBottom: 75 }}>Faça um depósito e coloque sua vida financeira em ordem.</Text>
           <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-            props.navigation.navigate('Deposit')
+            props.navigation.navigate('Deposito')
           }}>
             <Text>DEPOSITAR</Text>
           </TouchableOpacity>

@@ -35,8 +35,6 @@ const Transfer = (props) => {
           if (inputDocument.length == 11 || inputDocument.length == 14) {
             if (inputAmount != '') {
               props.navigation.navigate('TransferConfirmation', { amount: inputAmount, document: inputDocument })
-              setinputDocument('')
-              setinputAmount('')
             } else {
               alert("Campo Valor obrigatório.")
             }

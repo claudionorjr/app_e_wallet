@@ -24,7 +24,11 @@ const Account = (props) => {
         <Options text={`Cartão R$ 0,00`} icon={faCreditCard} marginLeft={10} />
         <Options text={`Recarga de Celular`} icon={faMobileAlt} marginLeft={10} />
         <Options text={`Atendimento`} icon={faCommentDots} marginLeft={10} />
-        <Options text={`Sair`} icon={faSignOutAlt} marginLeft={10} />
+        <Options text={`Sair`} icon={faSignOutAlt} marginLeft={10} btn={true}
+          onPress={() => {
+            props.dispatch({ type: 'login', response: false })
+          }}
+        />
       </AccountDaties>
     </ScreenUser>
   )

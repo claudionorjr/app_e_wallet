@@ -24,7 +24,6 @@ const Deposit = (props) => {
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           if (inputAmount != '') {
             props.navigation.navigate('DepositConfirmation', { amount: inputAmount })
-            setinputAmount('')
           } else {
             alert("Campo Valor obrigatório.")
           }

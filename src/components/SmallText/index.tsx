@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import { Text } from './styles';
+import { Text } from './styles'
 
 interface Props {
   text: string;
   color?: string;
 }
 
-const SmallText: React.FC<Props> = ({text, color}) => {
+const SmallText: React.FC<Props> = ({ text, color }) => {
   return (
-    <Text style={{color: color}}>{text}</Text>
-  );
-};
+    <Text style={{ color: color }}>{text}</Text>
+  )
+}
 
-export default SmallText;
+export default SmallText

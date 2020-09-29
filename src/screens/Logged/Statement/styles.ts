@@ -1,13 +1,22 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
+import Colors from '../../../assets/Colors'
+import styled from 'styled-components/native';
+
+export const DateTime = styled.Text`
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: ${Colors.background};
+`;
 
 export const styles = StyleSheet.create({
   shadow: {
     shadowColor: "#000",
     shadowOffset: {
-        width: 0,
-        height: 5,
+      width: 0,
+      height: 5,
     },
     shadowOpacity: 0.40,
     shadowRadius: 9.11,
