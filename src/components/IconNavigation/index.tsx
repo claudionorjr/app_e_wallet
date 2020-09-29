@@ -20,4 +20,4 @@ const IconNavigation: React.FC<Props> = ({ icon, NoSelectedColor, size, selected
   )
 }
 
-export default IconNavigation;
+export default IconNavigation

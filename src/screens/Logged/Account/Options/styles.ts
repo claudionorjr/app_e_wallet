@@ -13,3 +13,11 @@ export const OptionsContent = styled.View`
   border-top-width: 2px;
   border-color: ${Colors.primary};
 `;
+
+export const OptionBtn = styled.TouchableOpacity`
+  padding: 20px;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-top-width: 2px;
+  border-color: ${Colors.primary};
+`;
