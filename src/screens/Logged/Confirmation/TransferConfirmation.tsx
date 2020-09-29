@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faMoneyBillAlt, faIdCard } from '@fortawesome/free-solid-svg-icons'
 import { transferReceipts } from '../../requirements/receipts/receipts'
 import { styles } from './styles'
-import NavBar from '../Home/NavBar'
+import NavBar from '../../components/NavBar/NavBar'
 
 const TransferConfirmation = (props) => {
   const { amount, document } = props.route.params

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import Home from './screens/Home/Home'
+import Logged from './screens/Logged'
 import Login from './screens/Login'
 import configureStore from './store/configureStore'
 
@@ -11,7 +11,7 @@ const { store, persistor } = configureStore()
 
 const LoginGate = (props) => {
   let loggedIn = props.response
-  return loggedIn ? (<Home />) : (<Login />)
+  return loggedIn ? (<Logged />) : (<Login />)
 }
 
 const App = () => {

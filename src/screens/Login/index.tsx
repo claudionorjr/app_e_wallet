@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 
 import Button from '../../components/Button';
 import Input from '../../components/Input'
-import { styles } from './styles'
+import { HeadArea, InputArea, AppName } from './styles'
 import { validateUser } from '../../requirements/Login/auth'
 
 const Login = (props) => {
@@ -26,11 +26,11 @@ const Login = (props) => {
 
   return (
     <>
-      <View style={[styles.iconLoginArea, styles.shadow]}>
-        <Text style={{ padding: 23 }}><FontAwesomeIcon size={80} icon={faWallet} /></Text>
-        <Text style={{ fontSize: 20, padding: 23, fontWeight: "bold" }}>E-Carteira</Text>
-      </View>
-      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.inputLoginArea}>
+      <HeadArea>
+        <FontAwesomeIcon size={80} icon={faWallet} />
+        <AppName>E-Carteira</AppName>
+      </HeadArea>
+      <InputArea behavior={Platform.OS == "ios" ? "padding" : "height"}>
         <Input
           defaultValue={inputEmail}
           onChangeText={setInputEmail}
@@ -43,7 +43,7 @@ const Login = (props) => {
           secureTextEntry
         />
         <Button onPress={submit} text={'Entrar'} />
-      </KeyboardAvoidingView>
+      </InputArea>
     </>
   )
 }

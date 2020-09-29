@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { styles } from './styles'
 import RenderItem from './RenderItem'
-import NavBar from '../Home/NavBar'
 
 const Statement = (props) => {
 
@@ -57,7 +56,6 @@ const Statement = (props) => {
 
   return (
     <>
-      <NavBar navigation={props.navigation} type={'Statement'} />
       {props.account.transactions.length > 0 ?
         (
           <>

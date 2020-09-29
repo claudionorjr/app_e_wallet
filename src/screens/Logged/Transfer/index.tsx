@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { styles } from './styles'
-import NavBar from '../Home/NavBar'
-import documentField from '../../requirements/maskFields/documentField'
-import dinnerMask from '../../requirements/maskFields/dinnerField'
+import documentField from '../../../requirements/maskFields/documentField'
+import dinnerMask from '../../../requirements/maskFields/dinnerField'
 
 const Transfer = (props) => {
   const [inputAmount, setinputAmount] = useState('')
@@ -12,7 +11,6 @@ const Transfer = (props) => {
 
   return (
     <>
-      <NavBar navigation={props.navigation} type={'Transfer'} />
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.formArea}>
         <Text>CPF/CNPJ do Recebedor</Text>
         <TextInput

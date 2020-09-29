@@ -1233,6 +1233,14 @@
   resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha1-XdpkPhnlh3k7wgNN2b9zmK1D1AE=
 
+"@react-navigation/bottom-tabs@^5.9.1":
+  version "5.9.1"
+  resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/@react-navigation/bottom-tabs/-/bottom-tabs-5.9.1.tgz#68d50e301d06f97f83a785f5acdf2c50e9600053"
+  integrity sha1-aNUOMB0G+X+Dp4X1rN8sUOlgAFM=
+  dependencies:
+    color "^3.1.2"
+    react-native-iphone-x-helper "^1.2.1"
+
 "@react-navigation/core@^5.12.4":
   version "5.12.4"
   resolved "http://jfrog.ops.ecsbr.net/artifactory/api/npm/npm/@react-navigation/core/-/core-5.12.4.tgz#1bd0c81d098895c8ffe49f8624fae60c9abc5684"
