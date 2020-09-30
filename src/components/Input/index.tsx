@@ -9,12 +9,7 @@ interface Props {
   secureTextEntry?: boolean;
 }
 
-const Input: React.FC<Props> = ({
-  defaultValue,
-  onChangeText,
-  placeholder,
-  secureTextEntry,
-}) => {
+const Input: React.FC<Props> = ({ defaultValue, onChangeText, placeholder, secureTextEntry }) => {
   return (
     <InputText
       defaultValue={defaultValue}

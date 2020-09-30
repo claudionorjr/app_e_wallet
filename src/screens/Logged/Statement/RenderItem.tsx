@@ -1,6 +1,4 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt, faIdCard } from '@fortawesome/free-solid-svg-icons'
 
 import Options from '../../../components/Options'
@@ -22,7 +20,7 @@ const RenderItem: React.FC<RenderItemProps> = ({ object }) => {
           :
           null
       }
-      <Options text={`${object['value']}`} icon={faDollarSign} marginLeft={10} border={false} padding={5} />
+      <Options text={`${object['value'].toFixed(2)}`} icon={faDollarSign} marginLeft={10} border={false} padding={5} />
       <Options text={`${object['date']}`} icon={faCalendarAlt} marginLeft={10} border={false} padding={5} />
     </StatementDaties>
   )

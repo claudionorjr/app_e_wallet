@@ -22,6 +22,7 @@ export const Info = styled.View`
 `;
 
 export const StatementDaties = styled.View`
-border-top-width: 2px;
-border-color: ${Colors.primary};
+  margin-left: 30px;
+  border-bottom-width: 2px;
+  border-color: ${Colors.primary};
 `;

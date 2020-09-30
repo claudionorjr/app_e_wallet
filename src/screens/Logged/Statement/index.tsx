@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 
 import { transactionsObject } from '../../../@types/transactionsObject'
 import Button from '../../../components/Button'
@@ -9,10 +10,11 @@ import { Info, Screen, FlatList } from './styles'
 import RenderItem from './RenderItem'
 
 const Statement = (props) => {
+  const navigation = useNavigation()
   const transactions: transactionsObject[] = props.account.transactions
 
   const submitToDeposit = () => {
-    return props.navigation.navigate('Deposito')
+    return navigation.navigate('Deposito')
   }
 
   return (
@@ -24,7 +26,7 @@ const Statement = (props) => {
             <FlatList
               data={transactions}
               keyExtractor={(item) => String(item['transaction_id'])}
-              renderItem={({ item, index }) => <RenderItem object={item} />} />
+              renderItem={({ item }) => <RenderItem object={item} />} />
           </>)
           :
           (<Info>
