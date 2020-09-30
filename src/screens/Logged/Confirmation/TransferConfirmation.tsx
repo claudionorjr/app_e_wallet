@@ -19,7 +19,6 @@ type RouteParams = {
 
 const TransferConfirmation = (props) => {
   const route = useRoute<RouteProp<RouteParams, 'TransferConfirmation'>>()
-  console.log(route)
   const amount = route.params.amount
   const document = route.params.document
   return (

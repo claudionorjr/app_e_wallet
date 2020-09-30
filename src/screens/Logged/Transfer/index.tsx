@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { connect } from 'react-redux'
 
 import NavBar from '../../../components/NavBar'
@@ -8,6 +9,7 @@ import documentField from '../../../requirements/maskFields/documentField'
 import dinnerMask from '../../../requirements/maskFields/dinnerField'
 
 const Transfer = (props) => {
+  const navigation = useNavigation()
   const [inputAmount, setinputAmount] = useState('')
   const [inputDocument, setinputDocument] = useState('')
 
@@ -34,7 +36,9 @@ const Transfer = (props) => {
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           if (inputDocument.length == 11 || inputDocument.length == 14) {
             if (inputAmount != '') {
-              props.navigation.navigate('TransferConfirmation', { amount: inputAmount, document: inputDocument })
+              let document: string = inputDocument
+              let amount: string = inputAmount
+              navigation.navigate('TransferConfirmation', { amount, document })
             } else {
               alert("Campo Valor obrigatório.")
             }

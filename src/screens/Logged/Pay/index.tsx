@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { connect } from 'react-redux'
 
 import { styles } from './styles'
 import NavBar from '../../../components/NavBar'
 import dinnerMask from '../../../requirements/maskFields/dinnerField'
 
-const Pay = (props) => {
+const Pay = () => {
+  const navigation = useNavigation()
   const [inputAmount, setinputAmount] = useState('')
   return (
     <>
@@ -24,7 +26,8 @@ const Pay = (props) => {
 
         <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
           if (inputAmount != '') {
-            props.navigation.navigate('PaymentConfirmation', { amount: inputAmount })
+            let amount: string = inputAmount
+            navigation.navigate('PaymentConfirmation', { amount })
           } else {
             alert("Campo Valor obrigatório.")
           }

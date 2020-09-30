@@ -14,9 +14,6 @@ import Pay from '../screens/Logged/Pay'
 import Deposit from '../screens/Logged/Deposit'
 import Account from '../screens/Logged/Account'
 import SmallText from '../components/SmallText'
-import TransferConfirmation from '../screens/Logged/Confirmation/TransferConfirmation'
-import PaymentConfirmation from '../screens/Logged/Confirmation/PaymentConfirmation'
-import DepositConfirmation from '../screens/Logged/Confirmation/DepositConfirmation'
 import Colors from '../assets/Colors'
 
 const Tab = createBottomTabNavigator()
