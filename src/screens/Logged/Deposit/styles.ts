@@ -1,39 +1,11 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
 
+import Colors from '../../../assets/Colors'
 
-export const styles = StyleSheet.create({
-  depositArea: {
-    backgroundColor: "#f0f0f0",
-    flexDirection: 'column',
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 2,
-  },
-  input: {
-    backgroundColor: '#FFF',
-    width: '90%',
-    height: 36,
-    padding: 5,
-    borderRadius: 7,
-    margin: 10,
-  },
-  btn: {
-    alignItems: "center",
-    backgroundColor: "#FCB50D",
-    borderRadius: 3,
-    width: '90%',
-    paddingBottom: 10,
-    paddingTop: 10,
-  },
-  shadow: {
-    shadowColor: "#000",
-    shadowOffset: {
-        width: 0,
-        height: 5,
-    },
-    shadowOpacity: 0.40,
-    shadowRadius: 9.11,
-    elevation: 14,
-  },
-})
+export const FormArea = styled.KeyboardAvoidingView`
+  flex-direction: column;
+  background-color: ${Colors.background};
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+`;

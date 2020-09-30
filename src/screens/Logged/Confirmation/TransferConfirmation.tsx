@@ -1,12 +1,13 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faMoneyBillAlt, faIdCard } from '@fortawesome/free-solid-svg-icons'
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 
-//import { transferReceipts } from '../../../requirements/receipts/receipts'
-import { styles } from './styles'
-import { useRoute, RouteProp } from '@react-navigation/native'
+import Options from '../../../components/Options'
+import Button from '../../../components/Button'
+import NavBar from '../../../components/NavBar'
+import MediumText from '../../../components/MediumText'
+import { InfoArea, BtnArea } from './styles'
 
 interface DatiesProps {
   amount: string;
@@ -18,37 +19,30 @@ type RouteParams = {
 }
 
 const TransferConfirmation = (props) => {
+  const navigation = useNavigation()
   const route = useRoute<RouteProp<RouteParams, 'TransferConfirmation'>>()
   const amount = route.params.amount
   const document = route.params.document
+
+  const submit = () => {
+    props.dispatch({ type: 'validate/transfer', transferAmount: +amount, transferDocument: document })
+    navigation.navigate('Conta')
+  }
+
+  const goBack = () => navigation.navigate('Transferir')
+
   return (
     <>
-      <View style={styles.infoArea}>
-        <Text style={{ fontWeight: "bold", fontSize: 18 }}>CONFIRMAÇÃO DE TRANSFERÊNCIA:</Text>
-        <Text style={{ fontSize: 22 }}>
-          <FontAwesomeIcon size={18} icon={faMoneyBillAlt} />
-        . R$ {amount}
-        </Text>
-        <Text style={{ fontSize: 22 }}>
-          <FontAwesomeIcon size={18} icon={faIdCard} />
-        . {document}
-        </Text>
-      </View>
-      <View style={styles.btnArea}>
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          props.navigation.navigate('Transferir')
-        }}>
-          <Text>VOLTAR</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          props.dispatch({ type: 'validate/transfer', transferAmount: +amount, transferDocument: document })
-          // let textToWatsApp = transferReceipts(amount, document)
-          // Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
-          props.navigation.navigate('Conta')
-        }}>
-          <Text>CONFIRMAR</Text>
-        </TouchableOpacity>
-      </View>
+      <NavBar text={'Confirmação'} />
+      <InfoArea>
+        <MediumText text={'CONFIRMAÇÃO DE TRANSFERÊNCIA:'} />
+        <Options text={`${document}`} icon={faIdCard} marginLeft={10} border={false} padding={5} />
+        <Options text={`R$ ${amount}`} icon={faMoneyBillAlt} marginLeft={10} border={false} padding={5} />
+      </InfoArea>
+      <BtnArea>
+        <Button text={'voltar'} onPress={goBack} />
+        <Button text={'confirmar'} onPress={submit} />
+      </BtnArea>
     </>
   )
 }

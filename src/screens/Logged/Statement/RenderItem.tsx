@@ -1,29 +1,30 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
-import { styles } from './styles'
+import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt, faIdCard } from '@fortawesome/free-solid-svg-icons'
 
-const RenderItem = (props) => {
+import Options from '../../../components/Options'
+import { transactionsObject } from '../../../@types/transactionsObject'
+import { StatementDaties } from './styles'
+
+interface RenderItemProps {
+  object: transactionsObject;
+}
+
+const RenderItem: React.FC<RenderItemProps> = ({ object }) => {
   return (
-    <View style={styles.card}>
-      <Text style={{ fontSize: 22, color: props.color }}>
-        <FontAwesomeIcon size={18} icon={faInfo} />
-      . {props.obj['transaction_id']}
-      </Text>
-      <Text style={{ fontSize: 22, color: props.color }}>
-        <FontAwesomeIcon size={18} icon={faExchangeAlt} />
-      . {props.obj['description']}
-      </Text>
-      <Text style={{ fontSize: 22, color: props.color }}>
-        <FontAwesomeIcon size={18} icon={faCalendarAlt} />
-      . {props.obj['date']}
-      </Text>
-      <Text style={{ fontSize: 22, color: props.color }}>
-        <FontAwesomeIcon size={18} icon={faDollarSign} />
-      . {props.obj['value'].toFixed(2)}
-      </Text>
-    </View>
+    <StatementDaties>
+      <Options text={`${object['transaction_id']}`} icon={faInfo} marginLeft={10} border={false} padding={5} />
+      <Options text={`${object['description']}`} icon={faExchangeAlt} marginLeft={10} border={false} padding={5} />
+      {
+        object['description'] === 'Transferência' ?
+          <Options text={`${object['documentReceiver']}`} icon={faIdCard} marginLeft={10} border={false} padding={5} />
+          :
+          null
+      }
+      <Options text={`${object['value']}`} icon={faDollarSign} marginLeft={10} border={false} padding={5} />
+      <Options text={`${object['date']}`} icon={faCalendarAlt} marginLeft={10} border={false} padding={5} />
+    </StatementDaties>
   )
 }
 

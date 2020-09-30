@@ -1,40 +1,43 @@
 import React, { useState } from 'react'
-import { Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { connect } from 'react-redux'
 
-import { styles } from './styles'
+import { FormArea } from './styles'
 import NavBar from '../../../components/NavBar'
+import Button from '../../../components/Button'
+import Input from '../../../components/Input'
+import MediumText from '../../../components/MediumText'
 import dinnerMask from '../../../requirements/maskFields/dinnerField'
 
 const Pay = () => {
   const navigation = useNavigation()
   const [inputAmount, setinputAmount] = useState('')
+
+  const submit = () => {
+    if (inputAmount != '') {
+      let amount: string = inputAmount
+      navigation.navigate('PaymentConfirmation', { amount })
+      setinputAmount('')
+    } else {
+      alert("Campo Valor obrigatório.")
+    }
+  }
+
+  const amountCallback = (number) => setinputAmount(dinnerMask(number))
+
   return (
     <>
       <NavBar text={'Pagamento'} />
-      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.payArea}>
-        <>
-          <Text>Valor do Pagamento</Text>
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={(number) => setinputAmount(dinnerMask(number))}
-            value={inputAmount.toString()}
-            style={[styles.input, styles.shadow]}
-            placeholder="Valor..." />
-        </>
-
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          if (inputAmount != '') {
-            let amount: string = inputAmount
-            navigation.navigate('PaymentConfirmation', { amount })
-          } else {
-            alert("Campo Valor obrigatório.")
-          }
-        }}>
-          <Text>PAGAR</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+      <FormArea behavior={Platform.OS == "ios" ? "padding" : "height"}>
+        <MediumText text={'Valor do Pagamento'} />
+        <Input
+          defaultValue={inputAmount.toString()}
+          onChangeText={amountCallback}
+          placeholder={'Valor...'}
+        />
+        <Button text={'pagar'} onPress={submit} />
+      </FormArea>
     </>
   )
 }

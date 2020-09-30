@@ -1,39 +1,19 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
 
+import Colors from '../../../assets/Colors'
 
-export const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: "#000",
-    shadowOffset: {
-        width: 0,
-        height: 5,
-    },
-    shadowOpacity: 0.40,
-    shadowRadius: 9.11,
-    elevation: 14,
-  },
-  infoArea: {
-    flexDirection: "column",
-    justifyContent: 'center',
-    padding: 5,
-    margin: 8,
-    marginLeft: 50,
-    flex: 1,
-  },
-  btn: {
-    alignItems: "center",
-    backgroundColor: "#FCB50D",
-    borderRadius: 3,
-    width: '40%',
-    paddingBottom: 10,
-    paddingTop: 10,
-    margin: 10,
-  },
-  btnArea: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: 'center',
-    flex: 1,
-  },
-})
+export const InfoArea = styled.View`
+  flex-direction: column;
+  background-color: ${Colors.background};
+  align-items: center;
+  justify-content: center;
+  flex: 2;
+`;
+
+export const BtnArea = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: ${Colors.background};
+  justify-content: space-evenly;
+`;

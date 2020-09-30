@@ -1,12 +1,13 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, Linking } from 'react-native'
 import { connect } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons'
-
-//import { depositReceipts } from '../../../requirements/receipts/receipts'
-import { styles } from './styles'
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
+
+import Options from '../../../components/Options'
+import Button from '../../../components/Button'
+import NavBar from '../../../components/NavBar'
+import MediumText from '../../../components/MediumText'
+import { InfoArea, BtnArea } from './styles'
 
 interface DatiesProps {
   amount: string;
@@ -17,32 +18,28 @@ type RouteParams = {
 }
 
 const DepositConfirmation = (props) => {
+  const navigation = useNavigation()
   const route = useRoute<RouteProp<RouteParams, 'DepositConfirmation'>>()
   const amount = route.params.amount
+
+  const submit = () => {
+    props.dispatch({ type: 'validate/deposit', deposit: +amount })
+    navigation.navigate('Conta')
+  }
+
+  const goBack = () => navigation.navigate('Deposito')
+
   return (
     <>
-      <View style={styles.infoArea}>
-        <Text style={{ fontWeight: "bold", fontSize: 18 }}>CONFIRMAÇÃO DE DEPOSITO:</Text>
-        <Text style={{ fontSize: 22 }}>
-          <FontAwesomeIcon size={18} icon={faMoneyBillAlt} />
-      . R$ {amount}
-        </Text>
-      </View>
-      <View style={styles.btnArea}>
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          props.navigation.navigate('Deposito')
-        }}>
-          <Text>VOLTAR</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.btn, styles.shadow]} onPress={() => {
-          props.dispatch({ type: 'validate/deposit', deposit: +amount })
-          // let textToWatsApp = depositReceipts(amount)
-          // Linking.openURL(`whatsapp://send?text=${textToWatsApp}`)
-          props.navigation.navigate('Conta')
-        }}>
-          <Text>CONFIRMAR</Text>
-        </TouchableOpacity>
-      </View>
+      <NavBar text={'Confirmação'} />
+      <InfoArea>
+        <MediumText text={'CONFIRMAÇÃO DE DEPÓSITO:'} />
+        <Options text={`R$ ${amount}`} icon={faMoneyBillAlt} marginLeft={10} border={false} padding={5} />
+      </InfoArea>
+      <BtnArea>
+        <Button text={'voltar'} onPress={goBack} />
+        <Button text={'confirmar'} onPress={submit} />
+      </BtnArea>
     </>
   )
 }
