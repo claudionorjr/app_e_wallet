@@ -1,6 +1,6 @@
-import { transactionsObject } from './transactionsObject'
+import { TransactionsObject } from './TransactionsObject'
 
-export interface accountObject {
+export interface AccountObject {
   accountBank: string;
   agency: string;
   amount: number;
@@ -10,6 +10,6 @@ export interface accountObject {
   password: string;
   phone: string;
   transactions: [
-    transactionsObject
+    TransactionsObject
   ]
 }

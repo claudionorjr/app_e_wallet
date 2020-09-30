@@ -2,11 +2,11 @@ import React from 'react'
 import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt, faIdCard } from '@fortawesome/free-solid-svg-icons'
 
 import Options from '../../../components/Options'
-import { transactionsObject } from '../../../@types/transactionsObject'
+import { TransactionsObject } from '../../../@types/TransactionsObject'
 import { StatementDaties } from './styles'
 
 interface RenderItemProps {
-  object: transactionsObject;
+  object: TransactionsObject;
 }
 
 const RenderItem: React.FC<RenderItemProps> = ({ object }) => {

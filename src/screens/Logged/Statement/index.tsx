@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-import { transactionsObject } from '../../../@types/transactionsObject'
+import { TransactionsObject } from '../../../@types/TransactionsObject'
 import Button from '../../../components/Button'
 import NavBar from '../../../components/NavBar'
 import MediumText from '../../../components/MediumText'
@@ -11,7 +11,7 @@ import RenderItem from './RenderItem'
 
 const Statement = (props) => {
   const navigation = useNavigation()
-  const transactions: transactionsObject[] = props.account.transactions
+  const transactions: TransactionsObject[] = props.account.transactions
 
   const submitToDeposit = () => {
     return navigation.navigate('Deposito')

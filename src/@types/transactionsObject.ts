@@ -1,4 +1,4 @@
-export interface transactionsObject {
+export interface TransactionsObject {
   date: string;
   description: string;
   documentReceiver: string;
