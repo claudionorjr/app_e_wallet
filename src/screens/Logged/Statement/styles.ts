@@ -4,10 +4,22 @@ import { StyleSheet } from 'react-native'
 import Colors from '../../../assets/Colors'
 import styled from 'styled-components/native';
 
-export const DateTime = styled.Text`
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 10px;
+export const Screen = styled.View`
+  flex: 1;
+  flex-direction: column;
+  background-color: ${Colors.background};
+`;
+
+export const FlatList = styled.FlatList`
+  width: 100%;
+  background-color: ${Colors.background};
+`;
+
+export const Info = styled.View`
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: ${Colors.background};
 `;
 
@@ -21,10 +33,6 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.40,
     shadowRadius: 9.11,
     elevation: 14,
-  },
-  flatList: {
-    backgroundColor: "#f0f0f0",
-    width: '100%',
   },
   card: {
     padding: 5,
