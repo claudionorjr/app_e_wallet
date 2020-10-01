@@ -6,6 +6,7 @@ import { TransactionsObject } from '../../../@types/TransactionsObject'
 import Button from '../../../components/Button'
 import NavBar from '../../../components/NavBar'
 import MediumText from '../../../components/MediumText'
+
 import { Info, Screen, FlatList } from './styles'
 import RenderItem from './RenderItem'
 

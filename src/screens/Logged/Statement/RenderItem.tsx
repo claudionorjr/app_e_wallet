@@ -3,6 +3,7 @@ import { faInfo, faDollarSign, faCalendarAlt, faExchangeAlt, faIdCard } from '@f
 
 import Options from '../../../components/Options'
 import { TransactionsObject } from '../../../@types/TransactionsObject'
+
 import { StatementDaties } from './styles'
 
 interface RenderItemProps {

@@ -10,8 +10,8 @@ import MediumText from '../../../components/MediumText'
 import { InfoArea, BtnArea } from './styles'
 
 interface DatiesProps {
-  amount: string;
-  document: string;
+  inputAmount: string;
+  inputDocument: string;
 }
 
 type RouteParams = {
@@ -21,8 +21,8 @@ type RouteParams = {
 const TransferConfirmation = (props) => {
   const navigation = useNavigation()
   const route = useRoute<RouteProp<RouteParams, 'TransferConfirmation'>>()
-  const amount = route.params.amount
-  const document = route.params.document
+  const amount = route.params.inputAmount
+  const document = route.params.inputDocument
 
   const submit = () => {
     props.dispatch({ type: 'validate/transfer', transferAmount: +amount, transferDocument: document })

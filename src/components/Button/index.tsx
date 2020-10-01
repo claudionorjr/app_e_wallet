@@ -5,11 +5,12 @@ import { Container, ButtonText } from './styles'
 interface Props {
   onPress: () => void;
   text: string;
+  disabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({ onPress, text }) => {
+const Button: React.FC<Props> = ({ onPress, text, disabled }) => {
   return (
-    <Container onPress={onPress}>
+    <Container disabled={disabled} onPress={onPress}>
       <ButtonText>{text}</ButtonText>
     </Container>
   )

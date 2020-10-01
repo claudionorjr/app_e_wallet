@@ -6,8 +6,9 @@ import { faWallet } from '@fortawesome/free-solid-svg-icons'
 
 import Button from '../../components/Button';
 import Input from '../../components/Input'
-import { HeadArea, InputArea, AppName } from './styles'
 import { validateUser } from '../../requirements/Login/auth'
+
+import { HeadArea, InputArea, AppName } from './styles'
 
 const Login = (props) => {
   const [inputEmail, setInputEmail] = useState('')
@@ -15,11 +16,11 @@ const Login = (props) => {
 
   const submit = () => {
     const response = validateUser(inputEmail, inputPassword)
-    if (response.message == 'authenticated') {
-      props.dispatch({ type: 'login', response: true })
-    } else {
+
+    response.message == 'authenticated' ?
+      props.dispatch({ type: 'login', response: true }) :
       alert('E-mail ou senha incorretos!')
-    }
+
     setInputPassword('')
     setInputEmail('')
   }

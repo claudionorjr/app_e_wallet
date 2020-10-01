@@ -3,25 +3,24 @@ import { Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { connect } from 'react-redux'
 
-import { FormArea } from './styles'
 import NavBar from '../../../components/NavBar'
 import Button from '../../../components/Button'
 import Input from '../../../components/Input'
 import MediumText from '../../../components/MediumText'
 import dinnerMask from '../../../requirements/maskFields/dinnerField'
 
+import { FormArea } from './styles'
+
 const Deposit = () => {
   const navigation = useNavigation()
   const [inputAmount, setinputAmount] = useState('')
 
   const submit = () => {
-    if (inputAmount != '') {
-      let amount: string = inputAmount
-      navigation.navigate('DepositConfirmation', { amount })
-      setinputAmount('')
-    } else {
+    (inputAmount != '') ?
+      navigation.navigate('DepositConfirmation', { inputAmount }) :
       alert("Campo Valor obrigatório.")
-    }
+
+    setinputAmount('')
   }
 
   const amountCallback = (number) => setinputAmount(dinnerMask(number))
