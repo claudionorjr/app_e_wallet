@@ -1,5 +1,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects'
 
+import loginNavigationService from '../../services/LoginNavigation'
+
 import AuthService from '../../services/auth'
 import {
   LOGIN_REQUEST,
@@ -27,6 +29,6 @@ export default [
 ]
 
 export function* loginSuccess() {
-  console.log('loginSuccess');
-  yield call(NavigationService.replace, 'LoggedStack');
+  console.log('loginSuccess')
+  yield call(loginNavigationService)
 }

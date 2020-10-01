@@ -1,24 +1,13 @@
 import { AccountObject } from '../@types/AccountObject';
 import { toLogin, toLogout } from '../api';
 
-const login = (
-  email: string,
-  password: string,
-): Promise<{ user: AccountObject }> => {
-  return toLogin(email, password)
-    .then((response) => response.data)
-    .catch((err) => {
-      throw err;
-    });
-};
+const login = (email: string, password: string): string => {
+  let response = toLogin(email, password)
+  return response
+}
 
-
-const logout = (): Promise<any> => {
+const logout = (): void => {
   return toLogout()
-    .then((response) => response.data)
-    .catch((err) => {
-      throw err;
-    });
-};
+}
 
-export default { login, logout };
+export default { login, logout }
